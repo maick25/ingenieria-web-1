@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educ_tecnology - Educación de Calidad</title>
+    <!-- ENLACE A LOS ESTILOS: Ubicado correctamente en el HEAD según los estándares W3C -->
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+
+    <!-- MI BITÁCORA DE ESTUDIO: Menú de navegación superior fijo para la SPA con 6 opciones -->
+    <header class="main-navigation">
+        <div class="nav-container">
+            <span class="logo">Educ_Tecnology</span>
+            <nav>
+                <ul class="nav-links">
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('buscador', event)">Buscador</button></li>
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('inscripcion', event)">Alerta nuevos cursos</button></li>
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('ods', event)">Impacto</button></li>
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('accesibilidad', event)">Accesibilidad</button></li>
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('bitacora', event)">Bitácora</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenedor único global para el contenido dinámico de la aplicación -->
+    <main id="main-content">
+
+        <!-- SECCIÓN 1: INICIO (HOME) - Adapté mi estructura de Angular a etiquetas nativas -->
+        <section id="inicio">
+            <!-- Conservo mi cabecera principal con el título oficial de mi proyecto -->
+            <header class="hero-banner">
+                <h1>Educ_Tecnology</h1>
+                <p>Código limpio y estándares frontend profesionales: la base de todo gran emprendedor</p>
+            </header>
+
+            <!-- Catálogo de Cursos en Cuadrícula -->
+            <!-- Mantengo mi clase 'catalog-layout' para heredar los estilos del grid -->
+            <main class="catalog-layout">
+                <div id="contenedor-cursos" class="grid-cursos">
+                    <!-- NOTA PARA MÍ: Aquí quité el bucle @for de Angular. Dejo este contenedor limpio con ID 
+                         para inyectar mis tarjetas dinámicamente con JavaScript en el tercer paso -->
+                    <p id="mensaje-vacio-cursos" class="mensaje-alerta">No hay programas disponibles en Educ_Tecnology en este momento.</p>
+                </div>
+            </main>
+
+            <!-- Sección de Testimonios del Caso de Estudio Requerida por la Guía de la profe -->
+            <section class="testimonials-section">
+                <h2>Lo que dicen nuestros usuarios piloto</h2>
+                <p class="section-subtitle">Experiencias reales con nuestro enfoque formativo innovador.</p>
+                
+                <!-- Contenedor del grid de testimonios -->
+                <div id="contenedor-testimonios" class="testimonials-grid">
+                    <!-- NOTA PARA MÍ: Removí el @for de testimonios. Desde JS voy a replicar mis tarjetas 
+                         usando las etiquetas semánticas blockquote, h4 y small para que W3C no me ponga problema -->
+                </div>
+            </section>
+        </section>
+
+        <!-- SECCIÓN 2: BUSCADOR CON API EXTERNA (Nace oculta) -->
+        <section id="buscador" class="oculto">
+            <div class="section-container">
+                <h2>Buscador de Recursos Académicos</h2>
+                <p class="section-subtitle">Explora herramientas externas conectadas en tiempo real.</p>
+                
+                <div class="search-box-container">
+                    <input type="text" id="input-busqueda" placeholder="Ej. javascript, css, html...">
+                    <button type="button" id="btn-buscar">Buscar</button>
+                </div>
+                
+                <div class="catalog-layout">
+                    <div id="resultados-api" class="grid-cursos">
+                        <p class="mensaje-espera">Ingresa un término para comenzar la búsqueda técnica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: FORMULARIO DE INSCRIPCIÓN - Traduje mi código reactivo de Angular a nativo -->
+        <section id="inscripcion" class="oculto">
+            <div class="section-container">
+                <div class="page-container">
+                    
+                    <!-- Mi sección del formulario nativo -->
+                    <section class="form-section">
+                        <h2>Recibe Notificaciones de Nuevos Cursos</h2>
+                        <p class="section-subtitle">Déjanos tus datos de contacto para expandir tu formación digital.</p>
+                        
+                        <!-- NOTA PARA MÍ: Vinculado con la clase .custom-form de mis estilos -->
+                        <form id="form-registro-nativo" novalidate class="custom-form">
+                            <!-- Campo Nombres y Apellidos unidos -->
+                            <div class="form-group">
+                                <label for="nombre">Nombre y Apellidos Completo:</label>
+                                <input id="nombre" type="text" name="nombre" placeholder="Ej. Miguel Ángel" required>
+                                <span id="error-nombre" class="error-text oculto">El nombre completo es requerido (mínimo 3 caracteres, solo letras).</span>
+                            </div>
+
+                            <!-- Campo Correo Electrónico -->
+                            <div class="form-group">
+                                <label for="correo">Correo Electrónico:</label>
+                                <input id="correo" type="email" name="correo" placeholder="ejemplo@gmail.com" required>
+                                <span id="error-correo" class="error-text oculto">Ingresa un correo electrónico válido.</span>
+                            </div>
+
+                            <!-- Campo Número de Contacto -->
+                            <div class="form-group">
+                                <label for="telefono">Número de Contacto:</label>
+                                <input id="telefono" type="tel" name="telefono" placeholder="Ej. 3101234567" required>
+                                <span id="error-telefono" class="error-text oculto">El teléfono debe contener entre 7 y 10 dígitos numéricos.</span>
+                            </div>
+                            
+                            <!-- Campo sobre el Área de Interés Requerido para segmentar avisos -->
+                             <div class="form-group">
+                                <label for="area-interes">Área de Interés Principal:</label>
+                                <select id="area-interes" name="area" required class="select-nativo">
+                                    <option value="" disabled selected>-- Selecciona un área --</option>
+                                    <option value="frontend">Desarrollo Frontend & Estándares W3C</option>
+                                    <option value="emergentes">Tecnologías Emergentes</option>
+                                    <option value="emprendimiento">Emprendimiento y Modelos de Negocio</option>
+                                </select>
+                                <span id="error-area" class="error-text oculto">Por favor, selecciona una temática de tu interés.</span>
+                             </div>      
+
+                            <!-- Botón de envío nativo -->
+                            <button type="submit" id="btn-enviar-formulario" class="btn-submit">Enviar Registro</button>
+                        </form>
+                    </section>
+
+                    <!-- Requerimiento del caso: Redes sociales de Educ_Tecnology (Le agregué ID para ocultarla con JS) -->
+                    <section id="bloque-redes-sociales" class="social-section">
+                        <h3>Conéctate con nuestro ecosistema digital</h3>
+                        <p>Síguenos en nuestras redes oficiales para estar al tanto de talleres y eventos de la startup Educ_Tecnology.</p>
+                        <div class="social-links">
+                            <a href="https://facebook.com" target="_blank" class="social-item fb">Facebook</a>
+                            <a href="https://instagram.com" target="_blank" class="social-item ig">Instagram</a>
+                            <a href="https://linkedin.com" target="_blank" class="social-item ln">LinkedIn</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: IMPACTO SOCIAL SOCIAL ODS (Nace oculta) -->
+        <section id="ods" class="oculto">
+            <div class="section-container">
+                <h2>Impacto Social : Educación de Calidad</h2>
+                <div class="ods-content">
+                    <p>En <strong>Educ_Tecnology</strong> resolvemos la brecha de acceso al conocimiento técnico avanzado. Nuestra plataforma democratiza la formación en desarrollo frontend profesional y habilidades digitales para emprendedores.</p>
+                    <p>Al proporcionar recursos educativos gratuitos, estructurados y de alta calidad, empoderamos a estudiantes y trabajadores independientes para competir en la economía digital global, reduciendo la desigualdad laboral y fomentando el crecimiento económico sostenible.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: PANEL DE ACCESIBILIDAD (Nace oculta) -->
+        <section id="accesibilidad" class="oculto">
+            <div class="section-container">
+                <h2>Herramientas de Accesibilidad</h2>
+                <p class="section-subtitle">Personaliza tu experiencia de lectura en nuestro sitio.</p>
+                <div class="accessibility-controls">
+                    <button type="button" id="btn-contraste" class="btn-control">Alternar Alto Contraste</button>
+                    <button type="button" id="btn-fuente-mas" class="btn-control">Aumentar Tamaño de Letra</button>
+                    <button type="button" id="btn-fuente-menos" class="btn-control">Disminuir Tamaño de Letra</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: BITÁCORA Y CRÉDITOS (Nace oculta) -->
+        <section id="bitacora" class="oculto">
+            <div class="section-container">
+                <h2>Bitácora de Desarrollo</h2>
+                <p class="section-subtitle">Detalles técnicos del proyecto y mapa de navegación.</p>
+                <div class="bitacora-grid">
+                    <div class="autor-info">
+                        <h3>Autoría del Proyecto</h3>
+                        <p>Diseñado y desarrollado como solución web nativa SPA.</p>
+                    </div>
+                    <div class="sitemap-box">
+                        <h3>Mapa del Sitio (Mini-mapa)</h3>
+                        <ul>
+                            <li><a href="#" onclick="navegarSPA('inicio', event)">Inicio (Cursos y Testimonios)</a></li>
+                            <li><a href="#" onclick="navegarSPA('buscador', event)">Buscador de API Externa</a></li>
+                            <li><a href="#" onclick="navegarSPA('inscripcion', event)">Formulario con RegEx</a></li>
+                            <li><a href="#" onclick="navegarSPA('ods', event)">Compromiso ODS 4</a></li>
+                            <li><a href="#" onclick="navegarSPA('accesibilidad', event)">Controles Visuales</a></li>
+                            <li><a href="#" onclick="navegarSPA('bitacora', event)">Créditos del Sitio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <!-- NOTA PARA MÍ: Ventana modal flotante para la inscripción directa a un curso específico -->
+    <div id="modal-curso" class="modal-overlay oculto">
+        <div class="modal-content">
+            <button type="button" id="btn-cerrar-modal" class="modal-close-btn">&times;</button>
+            <h2 id="modal-titulo-curso">Inscripción al Curso</h2>
+            <p class="modal-subtitle">Completa tus datos para obtener acceso inmediato al material.</p>
+            
+            <form id="form-modal-curso" novalidate class="custom-form">
+                <div class="form-group">
+                    <label for="modal-nombre">Nombre y Apellidos Completo:</label>
+                    <input id="modal-nombre" type="text" placeholder="Ej. Miguel Ángel" required>
+                    <span id="error-modal-nombre" class="error-text oculto">El nombre es requerido (mínimo 3 caracteres).</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-correo">Correo Electrónico:</label>
+                    <input id="modal-correo" type="email" placeholder="ejemplo@gmail.com" required>
+                    <span id="error-modal-correo" class="error-text oculto">Ingresa un correo electrónico válido.</span>
+                </div>
+
+                <button type="submit" class="btn-submit">Confirmar Acceso al Curso</button>
+            </form>
+        </div>
+    </div>
+
+    </main>
+
+    <!-- ENLACE AL SCRIPT: Configurado con ruta de mi proyecto raíz -->
+    <script src="/js/index.js"></script>
+</body>
+</html>
