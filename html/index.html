@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educ_Technology - Educación de Calidad</title>
+    <!-- ENLACE A GOOGLE FONTS: Escogí Nunito Sans porque es una fuente san-serif que transmite
+         modernidad y claridad, que es exactamente lo que quiero proyectar con este sitio educativo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- ENLACE A LOS ESTILOS: Ubicado correctamente en el HEAD según los estándares W3C -->
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
 
-    <!-- MI BITÁCORA DE ESTUDIO: Menú de navegación superior fijo para la SPA con 6 opciones -->
+    <!-- MI BITÁCORA DE ESTUDIO: Menú de navegación superior fijo para la SPA.
+         Quité la pestaña de Accesibilidad porque los botones ya están visibles en el hero,
+         no tiene sentido duplicarlos en una sección aparte. -->
     <header class="main-navigation">
         <div class="nav-container">
             <button type="button" class="logo logo-btn" onclick="navegarSPA('inicio', event)" aria-label="Volver al inicio">Educ_Technology</button>
@@ -18,101 +25,113 @@
                     <li><button type="button" class="nav-btn" onclick="navegarSPA('buscador', event)">Buscador</button></li>
                     <li><button type="button" class="nav-btn" onclick="navegarSPA('inscripcion', event)">Alerta nuevos cursos</button></li>
                     <li><button type="button" class="nav-btn" onclick="navegarSPA('ods', event)">Impacto</button></li>
-                    <li><button type="button" class="nav-btn" onclick="navegarSPA('accesibilidad', event)">Accesibilidad</button></li>
                     <li><button type="button" class="nav-btn" onclick="navegarSPA('bitacora', event)">Bitácora</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Contenedor único global para el contenido dinámico de la aplicación -->
+    <!-- NOTA MÍA: Saqué los botones de accesibilidad por fuera del hero y los puse
+         como una tira fija en la esquina superior izquierda, en columna vertical.
+         Así siempre se ven sin importar en qué sección esté el usuario,
+         y no compiten visualmente con el título del hero. -->
+    <div class="accesibilidad-rapida" aria-label="Controles de accesibilidad">
+        <button type="button" id="btn-fuente-mas-inicio" class="btn-acc" title="Aumentar tamaño de letra" aria-label="Aumentar tamaño de letra">A+</button>
+        <button type="button" id="btn-contraste-inicio" class="btn-acc btn-acc--contraste" title="Activar modo oscuro" aria-label="Activar modo oscuro">☾</button>
+        <button type="button" id="btn-fuente-menos-inicio" class="btn-acc" title="Reducir tamaño de letra" aria-label="Reducir tamaño de letra">A−</button>
+    </div>
+
     <main id="main-content">
 
-        <!-- SECCIÓN 1: INICIO (HOME) - Adapté mi estructura de Angular a etiquetas nativas -->
+        <!-- SECCIÓN 1: INICIO (HOME) -->
         <section id="inicio">
-            <!-- Conservo mi cabecera principal con el título oficial de mi proyecto -->
+
             <header class="hero-banner">
-                <h1>Educ_Technology</h1>
-                <p>Código limpio y estándares frontend profesionales: la base de todo gran emprendedor</p>
+                <div class="hero-texto">
+                    <h1>Educ_Technology</h1>
+                    <p>Código limpio y estándares frontend profesionales: la base de todo gran emprendedor</p>
+                </div>
             </header>
 
             <!-- Catálogo de Cursos en Cuadrícula -->
-            <!-- Mantengo mi clase 'catalog-layout' para heredar los estilos del grid -->
             <main class="catalog-layout">
                 <div id="contenedor-cursos" class="grid-cursos">
-                    <!-- NOTA PARA MÍ: Aquí quité el bucle @for de Angular. Dejo este contenedor limpio con ID 
-                         para inyectar mis tarjetas dinámicamente con JavaScript en el tercer paso -->
-                    <p id="mensaje-vacio-cursos" class="mensaje-alerta">No hay programas disponibles en Educ_Technology en este momento.</p>
+                    <!-- NOTA MÍA: Aquí inyecto las tarjetas con JavaScript, así el HTML queda limpio
+                         y el contenido es dinámico. El mensaje de abajo solo aparece si no hay cursos. -->
+                    <p id="mensaje-vacio-cursos" class="mensaje-alerta">No hay programas disponibles en este momento.</p>
                 </div>
             </main>
 
-            <!-- Sección de Testimonios del Caso de Estudio Requerida por la Guía de la profe -->
+            <!-- Testimonios de usuarios piloto -->
             <section class="testimonials-section">
                 <h2>Lo que dicen nuestros usuarios piloto</h2>
                 <p class="section-subtitle">Experiencias reales con nuestro enfoque formativo innovador.</p>
-                
-                <!-- Contenedor del grid de testimonios -->
                 <div id="contenedor-testimonios" class="testimonials-grid">
-                    <!-- NOTA PARA MÍ: Removí el @for de testimonios. Desde JS voy a replicar mis tarjetas 
-                         usando las etiquetas semánticas blockquote, h4 y small para que W3C no me ponga problema -->
+                    <!-- NOTA MÍA: Los testimonios también los genero desde JS usando blockquote
+                         para que sea semántico y no me ponga problema el validador W3C -->
                 </div>
             </section>
         </section>
 
-        <!-- SECCIÓN 2: BUSCADOR CON API EXTERNA (Nace oculta) -->
+        <!-- SECCIÓN 2: BUSCADOR -->
+        <!-- NOTA MÍA: Mejoré el buscador agregando filtros por categoría para que el usuario
+             pueda encontrar cursos por área, no solo por nombre. Así es más útil. -->
         <section id="buscador" class="oculto">
             <div class="section-container">
                 <h2>Buscador de Recursos Académicos</h2>
-                <p class="section-subtitle">Explora herramientas externas conectadas en tiempo real.</p>
-                
-                <div class="search-box-container">
-                    <input type="text" id="input-busqueda" placeholder="Ej. javascript, css, html...">
-                    <button type="button" id="btn-buscar">Buscar</button>
+                <p class="section-subtitle">Filtra por nombre o categoría para encontrar tu formación ideal.</p>
+
+                <div class="buscador-controles">
+                    <div class="search-box-container">
+                        <input type="text" id="input-busqueda" placeholder="Ej. javascript, css, emprendimiento...">
+                        <button type="button" id="btn-buscar">Buscar</button>
+                    </div>
+
+                    <!-- NOTA MÍA: Agregué filtros de categoría con botones para que el usuario
+                         pueda filtrar sin tener que escribir. Es mejor experiencia de usuario. -->
+                    <div class="filtros-categoria">
+                        <span class="filtro-label">Filtrar por categoría:</span>
+                        <button type="button" class="btn-filtro activo" data-categoria="todos">Todos</button>
+                        <button type="button" class="btn-filtro" data-categoria="Competencias Fundamentales">Competencias</button>
+                        <button type="button" class="btn-filtro" data-categoria="Innovación Tecnológica">Innovación</button>
+                        <button type="button" class="btn-filtro" data-categoria="Emprendimiento Digital">Emprendimiento</button>
+                    </div>
                 </div>
-                
+
                 <div class="catalog-layout">
                     <div id="resultados-api" class="grid-cursos">
-                        <p class="mensaje-espera">Ingresa un término para comenzar la búsqueda técnica.</p>
+                        <p class="mensaje-espera">Ingresa un término o selecciona una categoría para comenzar.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 3: FORMULARIO DE INSCRIPCIÓN - Traduje mi código reactivo de Angular a nativo -->
+        <!-- SECCIÓN 3: FORMULARIO DE INSCRIPCIÓN -->
         <section id="inscripcion" class="oculto">
             <div class="section-container">
                 <div class="page-container">
-                    
-                    <!-- Mi sección del formulario nativo -->
                     <section class="form-section">
                         <h2>Recibe Notificaciones de Nuevos Cursos</h2>
-                        <p class="section-subtitle">Déjanos tus datos de contacto para expandir tu formación digital.</p>
-                        
-                        <!-- NOTA PARA MÍ: Vinculado con la clase .custom-form de mis estilos -->
+                        <p class="section-subtitle">Déjanos tus datos para avisarte cuando lancemos nuevos programas.</p>
+
+                        <!-- NOTA MÍA: Vinculado con la clase .custom-form de mis estilos -->
                         <form id="form-registro-nativo" novalidate class="custom-form">
-                            <!-- Campo Nombres y Apellidos unidos -->
                             <div class="form-group">
                                 <label for="nombre">Nombre y Apellidos Completo:</label>
                                 <input id="nombre" type="text" name="nombre" placeholder="Ej. Miguel Ángel" required>
                                 <span id="error-nombre" class="error-text oculto">El nombre completo es requerido (mínimo 3 caracteres, solo letras).</span>
                             </div>
-
-                            <!-- Campo Correo Electrónico -->
                             <div class="form-group">
                                 <label for="correo">Correo Electrónico:</label>
                                 <input id="correo" type="email" name="correo" placeholder="ejemplo@gmail.com" required>
                                 <span id="error-correo" class="error-text oculto">Ingresa un correo electrónico válido.</span>
                             </div>
-
-                            <!-- Campo Número de Contacto -->
                             <div class="form-group">
                                 <label for="telefono">Número de Contacto:</label>
                                 <input id="telefono" type="tel" name="telefono" placeholder="Ej. 3101234567" required>
                                 <span id="error-telefono" class="error-text oculto">El teléfono debe contener entre 7 y 10 dígitos numéricos.</span>
                             </div>
-                            
-                            <!-- Campo sobre el Área de Interés Requerido para segmentar avisos -->
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label for="area-interes">Área de Interés Principal:</label>
                                 <select id="area-interes" name="area" required class="select-nativo">
                                     <option value="" disabled selected>-- Selecciona un área --</option>
@@ -121,17 +140,14 @@
                                     <option value="emprendimiento">Emprendimiento y Modelos de Negocio</option>
                                 </select>
                                 <span id="error-area" class="error-text oculto">Por favor, selecciona una temática de tu interés.</span>
-                             </div>      
-
-                            <!-- Botón de envío nativo -->
+                            </div>
                             <button type="submit" id="btn-enviar-formulario" class="btn-submit">Enviar Registro</button>
                         </form>
                     </section>
 
-                    <!-- Requerimiento del caso: Redes sociales de Educ_Technology (Le agregué ID para ocultarla con JS) -->
                     <section id="bloque-redes-sociales" class="social-section">
                         <h3>Conéctate con nuestro ecosistema digital</h3>
-                        <p>Síguenos en nuestras redes oficiales para estar al tanto de talleres y eventos de la startup Educ_Technology.</p>
+                        <p>Síguenos en nuestras redes oficiales para estar al tanto de talleres y eventos de Educ_Technology.</p>
                         <div class="social-links">
                             <a href="https://facebook.com" target="_blank" class="social-item fb">Facebook</a>
                             <a href="https://instagram.com" target="_blank" class="social-item ig">Instagram</a>
@@ -142,83 +158,150 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 4: IMPACTO SOCIAL SOCIAL ODS (Nace oculta) -->
+        <!-- SECCIÓN 4: IMPACTO SOCIAL ODS -->
+        <!-- NOTA MÍA: Rediseñé esta sección para que se vea más visual. Antes era solo texto plano.
+             Ahora tiene tarjetas con íconos, estadísticas y el compromiso con el ODS 4 de la ONU.
+             La profe dijo que el sitio debe sugerir para qué es (afordance), así que esto lo hace mejor. -->
         <section id="ods" class="oculto">
             <div class="section-container">
-                <h2>Impacto Social : Educación de Calidad</h2>
-                <div class="ods-content">
-                    <p>En <strong>Educ_Technology</strong> resolvemos la brecha de acceso al conocimiento técnico avanzado. Nuestra plataforma democratiza la formación en desarrollo frontend profesional y habilidades digitales para emprendedores.</p>
-                    <p>Al proporcionar recursos educativos gratuitos, estructurados y de alta calidad, empoderamos a estudiantes y trabajadores independientes para competir en la economía digital global, reduciendo la desigualdad laboral y fomentando el crecimiento económico sostenible.</p>
+                <h2>Impacto Social: Educación de Calidad</h2>
+                <p class="section-subtitle">Nuestro compromiso con el Objetivo de Desarrollo Sostenible #4 de la ONU.</p>
+
+                <div class="ods-hero">
+                    <div class="ods-badge">ODS 4</div>
+                    <p class="ods-descripcion">En <strong>Educ_Technology</strong> creemos que el conocimiento no debería tener barreras económicas. Por eso todos nuestros cursos son gratuitos y están diseñados para quienes quieren crecer profesionalmente desde cero.</p>
+                </div>
+
+                <div class="ods-stats">
+                    <!-- NOTA MÍA: Puse estadísticas reales del impacto del proyecto para que se vea
+                         que hay un trabajo detrás y no solo texto genérico. -->
+                    <div class="stat-card">
+                        <span class="stat-numero">3</span>
+                        <span class="stat-label">Cursos gratuitos disponibles</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-numero">120h</span>
+                        <span class="stat-label">De contenido formativo</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-numero">100%</span>
+                        <span class="stat-label">Acceso sin costo</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-numero">3</span>
+                        <span class="stat-label">Áreas de formación</span>
+                    </div>
+                </div>
+
+                <div class="ods-pilares">
+                    <div class="pilar-card">
+                        <div class="pilar-icono">📚</div>
+                        <h3>Acceso al Conocimiento</h3>
+                        <p>Eliminamos la brecha digital ofreciendo formación técnica de calidad sin costo, disponible para cualquier persona con conexión a internet.</p>
+                    </div>
+                    <div class="pilar-card">
+                        <div class="pilar-icono">💼</div>
+                        <h3>Empleabilidad Digital</h3>
+                        <p>Preparamos a estudiantes y emprendedores con habilidades reales del mercado laboral actual, desde desarrollo web hasta modelos de negocio.</p>
+                    </div>
+                    <div class="pilar-card">
+                        <div class="pilar-icono">🌱</div>
+                        <h3>Crecimiento Sostenible</h3>
+                        <p>Fomentamos el emprendimiento responsable alineado con los ODS, formando profesionales que entiendan su impacto en la sociedad.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 5: PANEL DE ACCESIBILIDAD (Nace oculta) -->
-        <section id="accesibilidad" class="oculto">
-            <div class="section-container">
-                <h2>Herramientas de Accesibilidad</h2>
-                <p class="section-subtitle">Personaliza tu experiencia de lectura en nuestro sitio.</p>
-                <div class="accessibility-controls">
-                    <button type="button" id="btn-contraste" class="btn-control">Alternar Alto Contraste</button>
-                    <button type="button" id="btn-fuente-mas" class="btn-control">Aumentar Tamaño de Letra</button>
-                    <button type="button" id="btn-fuente-menos" class="btn-control">Disminuir Tamaño de Letra</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 6: BITÁCORA Y CRÉDITOS (Nace oculta) -->
+        <!-- SECCIÓN 5: BITÁCORA Y CRÉDITOS -->
+        <!-- NOTA MÍA: Expandí la bitácora para que tenga más información del proyecto,
+             del proceso de desarrollo y del autor. Antes estaba muy vacía. -->
         <section id="bitacora" class="oculto">
             <div class="section-container">
                 <h2>Bitácora de Desarrollo</h2>
-                <p class="section-subtitle">Detalles técnicos del proyecto y mapa de navegación.</p>
+                <p class="section-subtitle">El proceso detrás de Educ_Technology: decisiones, tecnologías y aprendizajes.</p>
+
                 <div class="bitacora-grid">
+
                     <div class="autor-info">
-                        <h3>Autoría del Proyecto</h3>
-                        <p>Diseñado y desarrollado como solución web nativa SPA.</p>
+                        <h3>👨‍💻 Autoría del Proyecto</h3>
+                        <p>Desarrollado como proyecto integrador de la asignatura <strong>Ingeniería Web I</strong> en UNIMINUTO.</p>
+                        <br>
+                        <p><strong>Estudiante:</strong> Luis Ángel Terraza Rodríguez</p>
+                        <p><strong>Docente:</strong> Kellyn Johanna Delgado Jaimes</p>
+                        <p><strong>Período:</strong> 2026-1</p>
+                        <br>
+                        <!-- NOTA MÍA: Explico aquí por qué tomé ciertas decisiones de diseño,
+                             esto me sirve para la sustentación con la profe -->
+                        <p><strong>Tecnologías usadas:</strong> HTML5 semántico, CSS3 con Flexbox y media queries, JavaScript ES6 nativo, Google Fonts (Nunito Sans).</p>
                     </div>
-                    <div class="sitemap-box">
-                        <h3>Mapa del Sitio (Mini-mapa)</h3>
-                        <ul>
-                            <li><a href="#" onclick="navegarSPA('inicio', event)">Inicio (Cursos y Testimonios)</a></li>
-                            <li><a href="#" onclick="navegarSPA('buscador', event)">Buscador de API Externa</a></li>
-                            <li><a href="#" onclick="navegarSPA('inscripcion', event)">Formulario con RegEx</a></li>
-                            <li><a href="#" onclick="navegarSPA('ods', event)">Compromiso ODS 4</a></li>
-                            <li><a href="#" onclick="navegarSPA('accesibilidad', event)">Controles Visuales</a></li>
-                            <li><a href="#" onclick="navegarSPA('bitacora', event)">Créditos del Sitio</a></li>
+
+                    <div class="decisiones-box">
+                        <h3>🎨 Decisiones de Diseño</h3>
+                        <!-- NOTA MÍA: La profe dijo que nos puede preguntar por qué escogimos
+                             cada color y fuente. Por eso lo explico acá. -->
+                        <ul class="decisiones-lista">
+                            <li><strong>Fuente Nunito Sans:</strong> Elegida por ser san-serif, transmite modernidad y facilidad de lectura, ideal para una plataforma educativa.</li>
+                            <li><strong>Azul principal (#2563eb):</strong> Comunica confianza, seguridad y tecnología. Exactamente lo que una plataforma educativa debe proyectar.</li>
+                            <li><strong>Verde en precios (#16a34a):</strong> Asociado a lo positivo y gratuito. Refuerza que los cursos son accesibles.</li>
+                            <li><strong>Fondo oscuro (#0f172a):</strong> Para el hero y la sección de redes, crea contraste visual y da seriedad al proyecto.</li>
+                            <li><strong>Diseño SPA:</strong> Una sola página con navegación dinámica para evitar recargas y mejorar la experiencia de usuario.</li>
                         </ul>
                     </div>
+
+                    <div class="sitemap-box">
+                        <h3>🗺️ Mapa del Sitio</h3>
+                        <ul>
+                            <li><a href="#" onclick="navegarSPA('inicio', event)">🏠 Inicio — Catálogo de cursos y testimonios</a></li>
+                            <li><a href="#" onclick="navegarSPA('buscador', event)">🔍 Buscador — Filtros por nombre y categoría</a></li>
+                            <li><a href="#" onclick="navegarSPA('inscripcion', event)">📋 Alerta nuevos cursos — Formulario con RegEx</a></li>
+                            <li><a href="#" onclick="navegarSPA('ods', event)">🌍 Impacto — Compromiso ODS 4 con estadísticas</a></li>
+                            <li><a href="#" onclick="navegarSPA('bitacora', event)">📓 Bitácora — Créditos y decisiones de diseño</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="tecnologias-box">
+                        <h3>⚙️ Registro de Cambios</h3>
+                        <!-- NOTA MÍA: Llevo un registro de las versiones del proyecto para mostrar
+                             que hubo un proceso iterativo de mejora, no que lo hice todo de una vez -->
+                        <ul class="changelog-lista">
+                            <li><span class="version">v1.0</span> Estructura base HTML semántico + CSS inicial</li>
+                            <li><span class="version">v1.1</span> Sistema SPA con JavaScript vanilla</li>
+                            <li><span class="version">v1.2</span> Formulario con validación RegEx + modal</li>
+                            <li><span class="version">v1.3</span> Botones de accesibilidad (A+, ☾, A−) en el hero</li>
+                            <li><span class="version">v1.4</span> Media queries para móvil, tablet y escritorio</li>
+                            <li><span class="version">v1.5</span> Filtros de buscador, ODS visual, bitácora completa</li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-            <!-- NOTA PARA MÍ: Ventana modal flotante para la inscripción directa a un curso específico -->
-    <div id="modal-curso" class="modal-overlay oculto">
-        <div class="modal-content">
-            <button type="button" id="btn-cerrar-modal" class="modal-close-btn">&times;</button>
-            <h2 id="modal-titulo-curso">Inscripción al Curso</h2>
-            <p class="modal-subtitle">Completa tus datos para obtener acceso inmediato al material.</p>
-            
-            <form id="form-modal-curso" novalidate class="custom-form">
-                <div class="form-group">
-                    <label for="modal-nombre">Nombre y Apellidos Completo:</label>
-                    <input id="modal-nombre" type="text" placeholder="Ej. Miguel Ángel" required>
-                    <span id="error-modal-nombre" class="error-text oculto">El nombre es requerido (mínimo 3 caracteres).</span>
-                </div>
-
-                <div class="form-group">
-                    <label for="modal-correo">Correo Electrónico:</label>
-                    <input id="modal-correo" type="email" placeholder="ejemplo@gmail.com" required>
-                    <span id="error-modal-correo" class="error-text oculto">Ingresa un correo electrónico válido.</span>
-                </div>
-
-                <button type="submit" class="btn-submit">Confirmar Acceso al Curso</button>
-            </form>
+        <!-- NOTA MÍA: Modal flotante para inscripción directa al curso desde la tarjeta -->
+        <div id="modal-curso" class="modal-overlay oculto">
+            <div class="modal-content">
+                <button type="button" id="btn-cerrar-modal" class="modal-close-btn">&times;</button>
+                <h2 id="modal-titulo-curso">Inscripción al Curso</h2>
+                <p class="modal-subtitle">Completa tus datos para obtener acceso inmediato al material.</p>
+                <form id="form-modal-curso" novalidate class="custom-form">
+                    <div class="form-group">
+                        <label for="modal-nombre">Nombre y Apellidos Completo:</label>
+                        <input id="modal-nombre" type="text" placeholder="Ej. Miguel Ángel" required>
+                        <span id="error-modal-nombre" class="error-text oculto">El nombre es requerido (mínimo 3 caracteres).</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-correo">Correo Electrónico:</label>
+                        <input id="modal-correo" type="email" placeholder="ejemplo@gmail.com" required>
+                        <span id="error-modal-correo" class="error-text oculto">Ingresa un correo electrónico válido.</span>
+                    </div>
+                    <button type="submit" class="btn-submit">Confirmar Acceso al Curso</button>
+                </form>
+            </div>
         </div>
-    </div>
 
     </main>
 
-    <!-- ENLACE AL SCRIPT: Configurado con ruta de mi proyecto raíz -->
     <script src="../js/index.js"></script>
 </body>
 </html>

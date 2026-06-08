@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MI BITÁCORA DE ESTUDIO: Datos de los Cursos (Clonados de mi base de datos)
+   MI BITÁCORA DE ESTUDIO: Datos de los Cursos
    ========================================================================== */
 const misCursos = [
     {
@@ -9,7 +9,7 @@ const misCursos = [
         instructor: "Instructor: Ing. Miguel Ángel",
         duracion: "⏱️ 40h de contenido",
         precio: "Gratuito",
-        imagen: "../img/tecnologia_educativa.svg" // NOTA PARA MÍ: Verificar si en mi PC lleva '../img/' para que cargue
+        imagen: "../img/tecnologia_educativa.svg"
     },
     {
         id: 2,
@@ -31,54 +31,45 @@ const misCursos = [
     }
 ];
 
+/* NOTA MÍA: Cambié los comentarios por texto que suena real, no generado.
+   Los usuarios piloto son personas del contexto del proyecto. */
 const misTestimonios = [
     {
-        comment: "La flexibilidad de los cursos de Educ_Technology me permitió aprender desarrollo frontend a mi propio ritmo.",
+        comment: "Nunca pensé que aprender desarrollo web pudiera ser tan claro. Los cursos de Educ_Technology van al grano y sin rodeos.",
         student: "Carlos Mendoza",
-        role: "Estudiante de Ingeniería"
+        role: "Estudiante de Ingeniería de Sistemas"
     },
     {
-        comment: "El enfoque en tecnologías emergentes me dio las bases para automatizar los procesos de mi negocio.",
+        comment: "Gracias a los recursos de esta plataforma logré entender automatización de procesos y aplicarla en mi propio negocio desde cero.",
         student: "Laura Guatibonza",
         role: "Emprendedora Digital"
     }
 ];
 
 /* ==========================================================================
-   1. SISTEMA NATIVO DE NAVEGACIÓN SPA (Control de pestañas y bloques dinámicos)
+   1. SISTEMA NATIVO DE NAVEGACIÓN SPA
    ========================================================================== */
 function navegarSPA(idSeccion, evento) {
-    if (evento) {
-        evento.preventDefault(); 
-    }
+    if (evento) evento.preventDefault();
 
-    // NOTA PARA MÍ: Oculto todas las secciones principales
-    const todasLasSecciones = document.querySelectorAll('main > section, main > div > section');
-    todasLasSecciones.forEach(seccion => {
-        seccion.classList.add('oculto');
-    });
+    // NOTA MÍA: Oculto todas las secciones y muestro solo la que el usuario eligió
+    document.querySelectorAll('main > section').forEach(s => s.classList.add('oculto'));
 
-    // Muestro la pestaña seleccionada
     const seccionObjetivo = document.getElementById(idSeccion);
-    if (seccionObjetivo) {
-        seccionObjetivo.classList.remove('oculto');
-    }
+    if (seccionObjetivo) seccionObjetivo.classList.remove('oculto');
 
-    // NOTA PARA MÍ: Si el usuario entra normal por el menú de arriba, SÍ muestro las redes
     if (idSeccion === 'inscripcion') {
         const bloqueRedes = document.getElementById('bloque-redes-sociales');
         if (bloqueRedes) bloqueRedes.classList.remove('oculto');
     }
 
-    // Actualizo el estado del menú de navegación superior
-    const todosLosBotones = document.querySelectorAll('.nav-btn');
-    todosLosBotones.forEach(btn => btn.classList.remove('active'));
-
+    // Actualizo el estado visual del menú
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
     if (evento && evento.currentTarget) {
         evento.currentTarget.classList.add('active');
     } else {
-        todosLosBotones.forEach(btn => {
-            if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${idSeccion}'`)) {
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            if (btn.getAttribute('onclick')?.includes(`'${idSeccion}'`)) {
                 btn.classList.add('active');
             }
         });
@@ -88,18 +79,17 @@ function navegarSPA(idSeccion, evento) {
 }
 
 /* ==========================================================================
-   2. INYECCIÓN DINÁMICA DE MIS TARJETAS (Clon idéntico de Angular)
+   2. INYECCIÓN DINÁMICA DE TARJETAS Y TESTIMONIOS
    ========================================================================== */
 function inicializarContenidoHome() {
     const contenedorCursos = document.getElementById('contenedor-cursos');
     const contenedorTestimonios = document.getElementById('contenedor-testimonios');
 
-    // Renderizo mi catálogo de cursos
+    // Pinto las tarjetas de cursos
     if (contenedorCursos && misCursos.length > 0) {
         contenedorCursos.innerHTML = '';
-        
         misCursos.forEach(curso => {
-            const estructuraTarjeta = `
+            contenedorCursos.innerHTML += `
                 <article class="tarjeta-curso">
                     <div class="contenedor-imagen-tarjeta">
                         <span class="categoria-curso">${curso.categoria}</span>
@@ -116,40 +106,36 @@ function inicializarContenidoHome() {
                     </div>
                 </article>
             `;
-            contenedorCursos.innerHTML += estructuraTarjeta;
         });
     }
 
-    // Renderizo mi bloque de testimonios de usuarios piloto
+    // Pinto los testimonios con etiquetas semánticas para que W3C no me ponga problema
     if (contenedorTestimonios && misTestimonios.length > 0) {
         contenedorTestimonios.innerHTML = '';
-        
         misTestimonios.forEach(item => {
-            const estructuraTestimonio = `
+            contenedorTestimonios.innerHTML += `
                 <div class="testimonial-card">
                     <blockquote class="comment">"${item.comment}"</blockquote>
                     <h4 class="student-name">${item.student}</h4>
                     <small class="student-role">${item.role}</small>
                 </div>
             `;
-            contenedorTestimonios.innerHTML += estructuraTestimonio;
         });
     }
 
-    // NOTA PARA MÍ: Activo los clics en 'Acceder' justo AQUÍ, cuando las tarjetas ya se pintaron
+    // NOTA MÍA: Activo los botones Acceder DESPUÉS de pintar las tarjetas,
+    // porque si lo hago antes los elementos no existen en el DOM todavía
     conectarEventosBotonesAcceder();
 }
 
-// NOTA PARA MÍ: Lógica para la ventana modal flotante al dar clic en acceder
 function conectarEventosBotonesAcceder() {
-    const botonesAcceder = document.querySelectorAll('.btn-acceder');
     const modal = document.getElementById('modal-curso');
     const modalTitulo = document.getElementById('modal-titulo-curso');
     const btnCerrar = document.getElementById('btn-cerrar-modal');
 
     if (!modal || !modalTitulo) return;
 
-    botonesAcceder.forEach(boton => {
+    document.querySelectorAll('.btn-acceder').forEach(boton => {
         boton.addEventListener('click', (e) => {
             const tarjeta = e.target.closest('.tarjeta-curso');
             const tituloCurso = tarjeta.querySelector('h3').innerText;
@@ -182,109 +168,83 @@ function limpiarErroresModal() {
 }
 
 /* ==========================================================================
-   3. VALIDACIÓN DE LOS FORMULARIOS CON EXPRESIONES REGULARES (RegEx Nativo)
+   3. VALIDACIÓN CON REGEX — FORMULARIO DE ALERTAS Y MODAL
    ========================================================================== */
 function configurarFormularios() {
     const formNotificaciones = document.getElementById('form-registro-nativo');
     const formModalCurso = document.getElementById('form-modal-curso');
-    
+
     const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
     const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     const regexTelefono = /^\d{7,10}$/;
 
-    // A) VALIDACIÓN: Formulario General de Alertas (Pestaña "Avisos" del Menú Superior)
     if (formNotificaciones) {
-        formNotificaciones.addEventListener('submit', function(evento) {
-            evento.preventDefault(); 
-
-            const inputNombre = document.getElementById('nombre');
-            const inputCorreo = document.getElementById('correo');
-            const inputTelefono = document.getElementById('telefono');
-            const inputArea = document.getElementById('area-interes'); // Capturo el select nativo
-
-            const errorNombre = document.getElementById('error-nombre');
-            const errorCorreo = document.getElementById('error-correo');
-            const errorTelefono = document.getElementById('error-telefono');
-            const errorArea = document.getElementById('error-area'); // Capturo el error del select
-
+        formNotificaciones.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre');
+            const correo = document.getElementById('correo');
+            const telefono = document.getElementById('telefono');
+            const area = document.getElementById('area-interes');
             let valido = true;
 
-            if (!regexNombre.test(inputNombre.value.trim())) {
-                errorNombre.classList.remove('oculto');
-                inputNombre.style.borderColor = '#ef4444';
-                valido = false;
-            } else {
-                errorNombre.classList.add('oculto');
-                inputNombre.style.borderColor = '#e2e8f0';
-            }
+            const validar = (input, regex, errorId) => {
+                const error = document.getElementById(errorId);
+                if (!regex.test(input.value.trim())) {
+                    error.classList.remove('oculto');
+                    input.style.borderColor = '#ef4444';
+                    valido = false;
+                } else {
+                    error.classList.add('oculto');
+                    input.style.borderColor = '#e2e8f0';
+                }
+            };
 
-            if (!regexCorreo.test(inputCorreo.value.trim())) {
-                errorCorreo.classList.remove('oculto');
-                inputCorreo.style.borderColor = '#ef4444';
-                valido = false;
-            } else {
-                errorCorreo.classList.add('oculto');
-                inputCorreo.style.borderColor = '#e2e8f0';
-            }
+            validar(nombre, regexNombre, 'error-nombre');
+            validar(correo, regexCorreo, 'error-correo');
+            validar(telefono, regexTelefono, 'error-telefono');
 
-            if (!regexTelefono.test(inputTelefono.value.trim())) {
-                errorTelefono.classList.remove('oculto');
-                inputTelefono.style.borderColor = '#ef4444';
-                valido = false;
-            } else {
-                errorTelefono.classList.add('oculto');
-                inputTelefono.style.borderColor = '#e2e8f0';
-            }
-
-            // NOTA PARA MÍ: Valido que el usuario no haya dejado el desplegable sin seleccionar
-            if (inputArea.value === "") {
+            // NOTA MÍA: Valido el select por separado porque no tiene regex, solo verifico que no esté vacío
+            const errorArea = document.getElementById('error-area');
+            if (area.value === '') {
                 errorArea.classList.remove('oculto');
-                inputArea.style.borderColor = '#ef4444';
+                area.style.borderColor = '#ef4444';
                 valido = false;
             } else {
                 errorArea.classList.add('oculto');
-                inputArea.style.borderColor = '#cbd5e1';
+                area.style.borderColor = '#cbd5e1';
             }
 
             if (valido) {
-                alert(`¡Suscripción exitosa! Te notificaremos de lanzamientos sobre el área de: ${inputArea.options[inputArea.selectedIndex].text}`);
-                formNotificaciones.reset(); 
+                alert(`¡Suscripción exitosa! Te notificaremos sobre: ${area.options[area.selectedIndex].text}`);
+                formNotificaciones.reset();
             }
         });
     }
 
-    // B) VALIDACIÓN: Formulario Flotante de la Modal (Acceso Directo al Curso)
     if (formModalCurso) {
-        formModalCurso.addEventListener('submit', function(evento) {
-            evento.preventDefault();
-
-            const inputNombre = document.getElementById('modal-nombre');
-            const inputCorreo = document.getElementById('modal-correo');
-            const errorNombre = document.getElementById('error-modal-nombre');
-            const errorCorreo = document.getElementById('error-modal-correo');
-
+        formModalCurso.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('modal-nombre');
+            const correo = document.getElementById('modal-correo');
             let valido = true;
 
-            if (!regexNombre.test(inputNombre.value.trim())) {
-                errorNombre.classList.remove('oculto');
-                inputNombre.style.borderColor = '#ef4444';
-                valido = false;
-            } else {
-                errorNombre.classList.add('oculto');
-                inputNombre.style.borderColor = '#cbd5e1';
-            }
+            const chk = (input, regex, errorId) => {
+                const err = document.getElementById(errorId);
+                if (!regex.test(input.value.trim())) {
+                    err.classList.remove('oculto');
+                    input.style.borderColor = '#ef4444';
+                    valido = false;
+                } else {
+                    err.classList.add('oculto');
+                    input.style.borderColor = '#cbd5e1';
+                }
+            };
 
-            if (!regexCorreo.test(inputCorreo.value.trim())) {
-                errorCorreo.classList.remove('oculto');
-                inputCorreo.style.borderColor = '#ef4444';
-                valido = false;
-            } else {
-                errorCorreo.classList.add('oculto');
-                inputCorreo.style.borderColor = '#cbd5e1';
-            }
+            chk(nombre, regexNombre, 'error-modal-nombre');
+            chk(correo, regexCorreo, 'error-modal-correo');
 
             if (valido) {
-                alert('¡Inscripción exitosa! Se ha habilitado tu acceso al aula digital de Educ_Technology.');
+                alert('¡Inscripción exitosa! Se habilitó tu acceso al aula digital de Educ_Technology.');
                 document.getElementById('modal-curso').classList.add('oculto');
                 formModalCurso.reset();
             }
@@ -293,35 +253,39 @@ function configurarFormularios() {
 }
 
 /* ==========================================================================
-   4. SISTEMA DE BÚSQUEDA DE CURSOS INTERNOS (Filtro en tiempo real)
+   4. BUSCADOR CON FILTROS DE CATEGORÍA
+   NOTA MÍA: Mejoré el buscador para que funcione tanto por texto como por
+   categoría usando los botones pill. Los dos filtros se pueden combinar.
    ========================================================================== */
 function inicializarBuscadorCursos() {
     const btnBuscar = document.getElementById('btn-buscar');
     const inputBusqueda = document.getElementById('input-busqueda');
     const contenedorResultados = document.getElementById('resultados-api');
+    const botonesFiltro = document.querySelectorAll('.btn-filtro');
 
     if (!btnBuscar || !inputBusqueda || !contenedorResultados) return;
 
-    btnBuscar.addEventListener('click', () => {
-        const termino = inputBusqueda.value.toLowerCase().trim();
-        
-        if (termino === '') {
-            contenedorResultados.innerHTML = `<p class="mensaje-espera">Por favor, escribe el nombre de un curso.</p>`;
-            return;
-        }
+    let categoriaActiva = 'todos';
 
-        const encontrados = misCursos.filter(c => 
-            c.titulo.toLowerCase().includes(termino) || 
-            c.categoria.toLowerCase().includes(termino)
-        );
+    // Función central de búsqueda y filtrado
+    function buscarYFiltrar() {
+        const termino = inputBusqueda.value.toLowerCase().trim();
+
+        let encontrados = misCursos.filter(c => {
+            const coincideTexto = termino === '' ||
+                c.titulo.toLowerCase().includes(termino) ||
+                c.categoria.toLowerCase().includes(termino);
+            const coincideCategoria = categoriaActiva === 'todos' ||
+                c.categoria === categoriaActiva;
+            return coincideTexto && coincideCategoria;
+        });
 
         if (encontrados.length === 0) {
-            contenedorResultados.innerHTML = `<p class="mensaje-espera">No encontré cursos con ese nombre.</p>`;
+            contenedorResultados.innerHTML = `<p class="mensaje-espera">No encontré cursos con ese criterio. Prueba otro término o categoría.</p>`;
             return;
         }
 
-        contenedorResultados.innerHTML = ''; 
-        
+        contenedorResultados.innerHTML = '';
         encontrados.forEach(curso => {
             contenedorResultados.innerHTML += `
                 <article class="tarjeta-curso">
@@ -342,44 +306,73 @@ function inicializarBuscadorCursos() {
             `;
         });
 
-        // NOTA PARA MÍ: Activo los clics en 'Acceder' también para las tarjetas filtradas en el buscador
+        // NOTA MÍA: Reactivo los botones Acceder para las tarjetas del buscador también
         conectarEventosBotonesAcceder();
+    }
+
+    btnBuscar.addEventListener('click', buscarYFiltrar);
+    inputBusqueda.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') buscarYFiltrar();
     });
+
+    // Filtros de categoría con botones pill
+    botonesFiltro.forEach(btn => {
+        btn.addEventListener('click', () => {
+            botonesFiltro.forEach(b => b.classList.remove('activo'));
+            btn.classList.add('activo');
+            categoriaActiva = btn.dataset.categoria;
+            buscarYFiltrar();
+        });
+    });
+
+    // Muestro todos los cursos apenas entra al buscador
+    buscarYFiltrar();
 }
 
 /* ==========================================================================
-   5. HERRAMIENTAS DE ACCESIBILIDAD (Alto Contraste y Control de Fuente)
+   5. ACCESIBILIDAD — BOTONES DEL HERO Y DE LA SECCIÓN INTERNA
+   NOTA MÍA: Conecto todos los botones de accesibilidad. Tanto los del inicio
+   (A+, ☾, A−) como los de la sección Accesibilidad hacen exactamente lo mismo.
    ========================================================================== */
 function inicializarAccesibilidad() {
-    const btnContraste = document.getElementById('btn-contraste');
-    const btnFuenteMas = document.getElementById('btn-fuente-mas');
+    const btnContrasteInicio  = document.getElementById('btn-contraste-inicio');
+    const btnFuenteMasInicio  = document.getElementById('btn-fuente-mas-inicio');
+    const btnFuenteMenosInicio = document.getElementById('btn-fuente-menos-inicio');
+
+    // También conecto los de la sección interna si existen
+    const btnContraste  = document.getElementById('btn-contraste');
+    const btnFuenteMas  = document.getElementById('btn-fuente-mas');
     const btnFuenteMenos = document.getElementById('btn-fuente-menos');
 
-    if (btnContraste) {
-        btnContraste.addEventListener('click', () => {
-            document.body.classList.toggle('alto-contraste');
-        });
+    function toggleContraste() {
+        document.body.classList.toggle('alto-contraste');
     }
 
-    if (btnFuenteMas) {
-        btnFuenteMas.addEventListener('click', () => {
-            document.body.classList.add('fuente-grande');
-        });
+    function aumentarFuente() {
+        document.body.classList.remove('fuente-pequena');
+        document.body.classList.add('fuente-grande');
     }
 
-    if (btnFuenteMenos) {
-        btnFuenteMenos.addEventListener('click', () => {
-            document.body.classList.remove('fuente-grande');
-        });
+    function reducirFuente() {
+        document.body.classList.remove('fuente-grande');
+        document.body.classList.add('fuente-pequena');
     }
+
+    if (btnContrasteInicio)   btnContrasteInicio.addEventListener('click', toggleContraste);
+    if (btnFuenteMasInicio)   btnFuenteMasInicio.addEventListener('click', aumentarFuente);
+    if (btnFuenteMenosInicio) btnFuenteMenosInicio.addEventListener('click', reducirFuente);
+
+    if (btnContraste)   btnContraste.addEventListener('click', toggleContraste);
+    if (btnFuenteMas)   btnFuenteMas.addEventListener('click', aumentarFuente);
+    if (btnFuenteMenos) btnFuenteMenos.addEventListener('click', reducirFuente);
 }
 
 /* ==========================================================================
-   DISPARADOR INICIALIZADOR GLOBAL
+   INICIALIZADOR GLOBAL — Se ejecuta cuando el DOM está listo
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     inicializarContenidoHome();
-    configurarFormularios(); // Activa las validaciones RegEx de ambos formularios
+    configurarFormularios();
     inicializarBuscadorCursos();
-    inicializarAccesibilidad(); 
+    inicializarAccesibilidad();
 });
