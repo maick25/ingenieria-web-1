@@ -1,0 +1,1037 @@
+/* ==========================================================================
+   PALETA DE COLORES — Educ_Technology
+   La profe dijo que lo primero visible en el CSS debe ser la paleta.
+   Escogí estos colores porque transmiten lo que quiero del sitio:
+   — Azul principal: confianza, tecnología y seguridad (ideal para educación)
+   — Verde: crecimiento, gratuito, accesibilidad
+   — Oscuro: seriedad, contraste, profesionalismo
+   — Blanco y gris claro: limpieza, orden, legibilidad
+   ========================================================================== */
+/*
+   COLOR PRIMARIO:    #2563eb  — Azul tecnológico (nav, botones, acentos)
+   COLOR SECUNDARIO:  #0f172a  — Azul muy oscuro / casi negro (hero, fondos)
+   COLOR ACENTO:      #16a34a  — Verde (precios, gratuito, ODS)
+   COLOR SUPERFICIE:  #f8fafc  — Gris muy claro (fondo general)
+   COLOR BORDE:       #e2e8f0  — Gris suave (separadores, bordes)
+   BLANCO:            #ffffff  — Tarjetas, modales, formularios
+   TEXTO PRINCIPAL:   #1e293b  — Casi negro, lectura cómoda
+   TEXTO SECUNDARIO:  #64748b  — Gris medio, subtítulos y metadatos
+*/
+
+/* ==========================================================================
+   RESET Y BASE GLOBAL
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* NOTA MÍA: Uso Nunito Sans de Google Fonts porque es san-serif y transmite
+       modernidad y claridad, perfecto para una plataforma de educación digital */
+    font-family: 'Nunito Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    line-height: 1.6;
+    font-weight: 300;
+    transition: background-color 0.3s ease, color 0.3s ease, font-size 0.2s ease;
+}
+
+/* Regla indispensable para mi sistema de navegación SPA */
+.oculto {
+    display: none !important;
+}
+
+.mensaje-alerta {
+    color: #64748b;
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* ==========================================================================
+   MENÚ DE NAVEGACIÓN SUPERIOR FIJO
+   ========================================================================== */
+.main-navigation {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.logo-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.logo-btn:hover {
+    color: #2563eb;
+    background-color: #eef2ff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #64748b;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    color: #2563eb;
+    background-color: #eff6ff;
+}
+
+/* ==========================================================================
+   BOTONES DE ACCESIBILIDAD — FLOTANDO EN LA ESQUINA INFERIOR IZQUIERDA
+   NOTA MÍA: Los puse con position fixed en la parte de abajo a la izquierda,
+   con un margen de 24px para que no estén pegados al borde.
+   En columna vertical, con sombra, para que se vean como botones flotantes
+   independientes del resto del contenido.
+   ========================================================================== */
+.accesibilidad-rapida {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 999;
+}
+
+.btn-acc {
+    background: #1e1b4b;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-acc:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+/* NOTA MÍA: El botón de contraste tiene color amarillo para que se entienda
+   visualmente que es el de "modo oscuro" sin necesidad de leerlo */
+.btn-acc--contraste {
+    background: #1e1b4b;
+    border-color: rgba(234, 179, 8, 0.4);
+    color: #fde68a;
+}
+
+.btn-acc--contraste:hover {
+    background: #854d0e;
+    border-color: #eab308;
+    box-shadow: 0 6px 16px rgba(234, 179, 8, 0.35);
+}
+
+/* ==========================================================================
+   HERO BANNER — Ahora centrado sin los botones dentro
+   ========================================================================== */
+.hero-banner {
+    text-align: center;
+    padding: 56px 32px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.hero-texto h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.hero-texto p {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   CATÁLOGO DE CURSOS
+   ========================================================================== */
+.catalog-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 64px 24px;
+}
+
+.grid-cursos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+/* ==========================================================================
+   TARJETAS DE CURSOS
+   ========================================================================== */
+.tarjeta-curso {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.tarjeta-curso:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.contenedor-imagen-tarjeta {
+    position: relative;
+    height: 160px;
+    width: 100%;
+}
+
+.contenedor-imagen-tarjeta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.categoria-curso {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #4f46e5;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.contenido-tarjeta {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.contenido-tarjeta h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.instructor {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.duracion {
+    font-size: 0.813rem;
+    color: #64748b;
+    margin-bottom: 16px;
+}
+
+.fila-inferior {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.precio-curso {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #16a34a;
+}
+
+.btn-acceder {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    font-family: inherit;
+}
+
+.btn-acceder:hover {
+    background: #1d4ed8;
+}
+
+/* ==========================================================================
+   SECCIÓN DE TESTIMONIOS
+   NOTA MÍA: Sin borde azul, solo borde gris suave. La sombra aparece al hacer
+   hover para dar feedback visual sin ser exagerado (la profe dijo: menos es más)
+   ========================================================================== */
+.testimonials-section {
+    padding: 4rem 2rem;
+    background-color: #ffffff;
+    text-align: center;
+    margin-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.testimonials-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    color: #64748b;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: none;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
+}
+
+.comment {
+    font-style: italic;
+    color: #334155;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.student-name {
+    color: #1e293b;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.student-role {
+    color: #64748b;
+    font-size: 0.85rem;
+    display: block;
+}
+
+/* ==========================================================================
+   BUSCADOR CON FILTROS DE CATEGORÍA
+   ========================================================================== */
+.section-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 24px;
+    min-height: 60vh;
+}
+
+.section-container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.buscador-controles {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 700px;
+}
+
+.search-box-container {
+    display: flex;
+    gap: 12px;
+}
+
+.search-box-container input {
+    flex-grow: 1;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+}
+
+.search-box-container input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-box-container button {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+}
+
+.search-box-container button:hover {
+    background-color: #1d4ed8;
+}
+
+/* NOTA MÍA: Los filtros de categoría son botones pill que se activan al hacer clic.
+   Mucho más intuitivo que escribir el nombre exacto de la categoría. */
+.filtros-categoria {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filtro-label {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.btn-filtro {
+    background: #f1f5f9;
+    border: 1.5px solid #e2e8f0;
+    color: #64748b;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.btn-filtro:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+.btn-filtro.activo {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+.mensaje-espera {
+    color: #64748b;
+    font-style: italic;
+    font-size: 1rem;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px dashed #cbd5e1;
+    text-align: center;
+    max-width: 600px;
+}
+
+/* ==========================================================================
+   FORMULARIO DE INSCRIPCIÓN Y REDES SOCIALES
+   ========================================================================== */
+.page-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0 20px;
+}
+
+.form-section {
+    flex: 2;
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #334155;
+}
+
+.form-group input {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+}
+
+/* NOTA MÍA: Estilos para los mensajes de error del RegEx, los controlo desde JS */
+.error-text {
+    color: #ef4444;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: -4px;
+}
+
+.btn-submit {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+    font-family: inherit;
+}
+
+.btn-submit:hover {
+    background: #1d4ed8;
+}
+
+.social-section {
+    flex: 1;
+    background: #0f172a;
+    padding: 40px 24px;
+    border-radius: 12px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.social-section h3 {
+    color: #10b981;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.social-section p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.social-item {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: transform 0.2s, opacity 0.2s;
+    text-align: center;
+}
+
+.social-item:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.social-item.fb { background-color: #2563eb; }
+.social-item.ig { background-color: #db2777; }
+.social-item.ln { background-color: #0284c7; }
+
+.form-group select {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.form-group select:focus {
+    border-color: #2563eb;
+}
+
+/* ==========================================================================
+   SECCIÓN ODS — IMPACTO VISUAL
+   NOTA MÍA: Rediseñé esta sección completamente. Antes era solo dos párrafos
+   de texto. Ahora tiene un badge, estadísticas y tarjetas de pilares para que
+   se vea el impacto real del proyecto de forma visual y clara.
+   ========================================================================== */
+.ods-hero {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: #ffffff;
+    padding: 28px 32px;
+    border-radius: 12px;
+    border-left: 6px solid #c5192d;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin-bottom: 32px;
+    margin-top: 20px;
+}
+
+.ods-badge {
+    background: #c5192d;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 900;
+    padding: 12px 20px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+}
+
+.ods-descripcion {
+    color: #334155;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.ods-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-top: 3px solid #2563eb;
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.stat-numero {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #2563eb;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.ods-pilares {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.pilar-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 28px 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.pilar-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09);
+    transform: translateY(-3px);
+}
+
+.pilar-icono {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.pilar-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+.pilar-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   BITÁCORA EXPANDIDA
+   NOTA MÍA: Aumenté el grid a 2 columnas para mostrar más información.
+   Cada caja tiene su propósito: autor, decisiones de diseño, mapa y changelog.
+   ========================================================================== */
+.bitacora-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.autor-info, .sitemap-box, .decisiones-box, .tecnologias-box {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.autor-info h3, .sitemap-box h3, .decisiones-box h3, .tecnologias-box h3 {
+    margin-bottom: 16px;
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.autor-info p {
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.sitemap-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sitemap-box a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: color 0.2s;
+}
+
+.sitemap-box a:hover {
+    text-decoration: underline;
+}
+
+.decisiones-lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.decisiones-lista li {
+    font-size: 0.9rem;
+    color: #334155;
+    line-height: 1.5;
+    padding-left: 12px;
+    border-left: 3px solid #2563eb;
+}
+
+.changelog-lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.changelog-lista li {
+    font-size: 0.9rem;
+    color: #334155;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.version {
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   MODAL FLOTANTE
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+    animation: aparecerModal 0.3s ease-out;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 16px; right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #64748b;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-close-btn:hover { color: #ef4444; }
+
+.modal-subtitle {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    margin-top: 4px;
+}
+
+@keyframes aparecerModal {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ==========================================================================
+   MODO OSCURO / ALTO CONTRASTE
+   NOTA MÍA: Activo con la clase body.alto-contraste desde JS cuando el usuario
+   pulsa el botón ☾. Transición suave para que no sea un salto brusco.
+   ========================================================================== */
+body.alto-contraste {
+    background-color: #0a0a0a !important;
+    color: #f0f0f0 !important;
+}
+
+body.alto-contraste .main-navigation {
+    background-color: #111111 !important;
+    border-bottom: 1px solid #2a2a2a !important;
+}
+
+body.alto-contraste .logo { color: #f0f0f0 !important; }
+
+body.alto-contraste .nav-btn { color: #94a3b8 !important; }
+
+body.alto-contraste .hero-banner {
+    background: linear-gradient(135deg, #000000 0%, #0d0d2b 100%);
+}
+
+body.alto-contraste .testimonials-section {
+    background-color: #111111 !important;
+    border-top-color: #2a2a2a !important;
+}
+
+body.alto-contraste .testimonial-card,
+body.alto-contraste .tarjeta-curso,
+body.alto-contraste .form-section,
+body.alto-contraste .autor-info,
+body.alto-contraste .sitemap-box,
+body.alto-contraste .decisiones-box,
+body.alto-contraste .tecnologias-box,
+body.alto-contraste .pilar-card,
+body.alto-contraste .stat-card,
+body.alto-contraste .ods-hero,
+body.alto-contraste .modal-content {
+    background-color: #1a1a1a !important;
+    color: #f0f0f0 !important;
+    border-color: #2a2a2a !important;
+}
+
+body.alto-contraste .contenido-tarjeta h3,
+body.alto-contraste .student-name,
+body.alto-contraste .pilar-card h3 {
+    color: #60a5fa !important;
+}
+
+body.alto-contraste .comment,
+body.alto-contraste .instructor,
+body.alto-contraste .duracion,
+body.alto-contraste .student-role,
+body.alto-contraste .pilar-card p,
+body.alto-contraste .ods-descripcion {
+    color: #94a3b8 !important;
+}
+
+body.alto-contraste .sitemap-box a { color: #60a5fa !important; }
+
+body.alto-contraste .form-group input,
+body.alto-contraste .form-group select {
+    background-color: #111111 !important;
+    color: #f0f0f0 !important;
+    border-color: #2a2a2a !important;
+}
+
+/* ==========================================================================
+   TAMAÑO DE FUENTE: GRANDE Y PEQUEÑO
+   ========================================================================== */
+body.fuente-grande { font-size: 1.2rem !important; }
+body.fuente-grande h1 { font-size: 3rem !important; }
+body.fuente-grande h2 { font-size: 2.4rem !important; }
+body.fuente-grande h3 { font-size: 1.7rem !important; }
+
+body.fuente-pequena { font-size: 0.85rem !important; }
+body.fuente-pequena h1 { font-size: 1.8rem !important; }
+body.fuente-pequena h2 { font-size: 1.4rem !important; }
+body.fuente-pequena h3 { font-size: 1.1rem !important; }
+
+/* ==========================================================================
+   MEDIA QUERIES — RESPONSIVIDAD
+   NOTA MÍA: Uso 3 breakpoints como explicó la profe: tablet (900px),
+   celular (768px) y celular pequeño (480px). Cada uno ajusta el layout
+   para que el sitio se vea bien en cualquier dispositivo.
+   ========================================================================== */
+
+/* TABLET (máximo 900px) */
+@media (max-width: 900px) {
+    .nav-btn { padding: 6px 10px; font-size: 0.88rem; }
+    .hero-texto h1 { font-size: 2rem; }
+    .section-container h2 { font-size: 1.6rem; }
+}
+
+/* CELULAR (máximo 768px) */
+@media (max-width: 768px) {
+    /* NOTA MÍA: En celular el menú se hace más compacto y se reorganiza */
+    .nav-container { flex-direction: column; gap: 10px; padding: 0 12px 8px; }
+    .nav-links { gap: 4px; flex-wrap: wrap; justify-content: center; }
+    .nav-btn { font-size: 0.82rem; padding: 5px 8px; }
+
+    /* En móvil los botones se hacen más pequeños para no tapar contenido */
+    .accesibilidad-rapida { bottom: 16px; left: 16px; }
+    .btn-acc { width: 38px; height: 38px; font-size: 0.8rem; }
+    .hero-banner { padding: 40px 20px 28px; }
+    .hero-texto h1 { font-size: 1.75rem; }
+    .hero-texto p { font-size: 0.95rem; }
+
+    .grid-cursos { grid-template-columns: 1fr; }
+    .catalog-layout { padding: 0 16px 40px; }
+    .page-container { flex-direction: column; padding: 0 12px; }
+    .form-section { padding: 20px; }
+    .testimonials-section { padding: 2.5rem 1rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .section-container { padding: 0 16px; }
+    .search-box-container { flex-direction: column; }
+    .buscador-controles { max-width: 100%; }
+    .ods-hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .ods-stats { grid-template-columns: repeat(2, 1fr); }
+    .bitacora-grid { grid-template-columns: 1fr; }
+    .modal-content { padding: 28px 20px; margin: 0 12px; max-width: 100%; }
+}
+
+/* CELULAR MUY PEQUEÑO (máximo 480px) */
+@media (max-width: 480px) {
+    .hero-texto h1 { font-size: 1.5rem; }
+    .logo { font-size: 1.1rem; }
+    .ods-stats { grid-template-columns: 1fr; }
+    .ods-pilares { grid-template-columns: 1fr; }
+    .testimonial-card { padding: 1.25rem; }
+}
