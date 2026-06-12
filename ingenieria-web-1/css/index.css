@@ -1,5 +1,5 @@
 /* ========================================================================== 
-   MI BITÁCORA DE ESTUDIO: Estilos Globales, Normalización y SPA Base 
+MI BITÁCORA DE ESTUDIO: Estilos Globales, Normalización y SPA Base 
    ========================================================================== */
 * {
     margin: 0;
@@ -95,7 +95,7 @@ body {
 }
 
 /* ========================================================================== 
-   ESTILOS DE LA SECCIÓN DE INICIO (HOME.CSS ORIGINAL) 
+ESTILOS DE LA SECCIÓN DE INICIO (HOME.CSS ORIGINAL) 
    ========================================================================== */
 .hero-banner {
     text-align: center;
@@ -124,7 +124,7 @@ body {
 }
 
 /* ========================================================================== 
-   ESTILOS DE LAS TARJETAS DE CURSOS (COURSE-CARD.CSS ORIGINAL) 
+ESTILOS DE LAS TARJETAS DE CURSOS (COURSE-CARD.CSS ORIGINAL) 
    ========================================================================== */
 .tarjeta-curso {
     background: #ffffff;
@@ -220,7 +220,7 @@ body {
 }
 
 /* ========================================================================== 
-   SECCIÓN DE TESTIMONIOS (HOME.CSS ORIGINAL) 
+SECCIÓN DE TESTIMONIOS (HOME.CSS ORIGINAL) 
    ========================================================================== */
 .testimonials-section {
     padding: 4rem 2rem;
@@ -286,7 +286,7 @@ body {
 }
 
 /* ========================================================================== 
-   ESTILOS DE LA SECCIÓN DEL BUSCADOR API 
+ESTILOS DE LA SECCIÓN DEL BUSCADOR API 
    ========================================================================== */
 .section-container {
     max-width: 1200px;
@@ -360,7 +360,7 @@ body {
 }
 
 /* ==========================================================================
-   ESTILOS DE LA SECCIÓN DE INSCRIPCIÓN (FORMULARIO Y REDES LADO A LADO)
+ESTILOS DE LA SECCIÓN DE INSCRIPCIÓN (FORMULARIO Y REDES LADO A LADO)
    ========================================================================== */
 
 /* NOTA PARA MÍ: Uso Flexbox para alinear el formulario y las redes como mi look de Angular */
@@ -506,7 +506,7 @@ body {
 }
 
 /* ==========================================================================
-   ESTILOS DE LAS SECCIONES COMPLEMENTARIAS (ODS, ACCESIBILIDAD Y BITÁCORA)
+ESTILOS DE LAS SECCIONES COMPLEMENTARIAS (ODS, ACCESIBILIDAD Y BITÁCORA)
    ========================================================================== */
 .ods-content {
     background: #ffffff;
@@ -585,7 +585,7 @@ body {
 }
 
 /* ==========================================================================
-   NOTA PARA MÍ: Clases globales que voy a activar desde JS para la accesibilidad
+NOTA PARA MÍ: Clases globales que voy a activar desde JS para la accesibilidad
    ========================================================================== */
 body.alto-contraste {
     background-color: #000000 !important;
@@ -618,7 +618,7 @@ body.fuente-grande h2 { font-size: 2.5rem !important; }
 body.fuente-grande h3 { font-size: 1.75rem !important; }
 
 /* ==========================================================================
-   NOTA PARA MÍ: Estilos de la Ventana Modal Flotante (Inscripción Directa)
+NOTA PARA MÍ: Estilos de la Ventana Modal Flotante (Inscripción Directa)
    ========================================================================== */
 .modal-overlay {
     position: fixed;

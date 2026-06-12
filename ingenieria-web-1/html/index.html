@@ -28,7 +28,7 @@
     <!-- Contenedor único global para el contenido dinámico de la aplicación -->
     <main id="main-content">
 
-        <!-- SECCIÓN 1: INICIO (HOME) - Adapté mi estructura de Angular a etiquetas nativas -->
+        <!-- SECCIÓN 1: INICIO (HOME)
         <section id="inicio">
             <!-- Conservo mi cabecera principal con el título oficial de mi proyecto -->
             <header class="hero-banner">
@@ -40,8 +40,6 @@
             <!-- Mantengo mi clase 'catalog-layout' para heredar los estilos del grid -->
             <main class="catalog-layout">
                 <div id="contenedor-cursos" class="grid-cursos">
-                    <!-- NOTA PARA MÍ: Aquí quité el bucle @for de Angular. Dejo este contenedor limpio con ID 
-                         para inyectar mis tarjetas dinámicamente con JavaScript en el tercer paso -->
                     <p id="mensaje-vacio-cursos" class="mensaje-alerta">No hay programas disponibles en Educ_Technology en este momento.</p>
                 </div>
             </main>
@@ -53,8 +51,8 @@
                 
                 <!-- Contenedor del grid de testimonios -->
                 <div id="contenedor-testimonios" class="testimonials-grid">
-                    <!-- NOTA PARA MÍ: Removí el @for de testimonios. Desde JS voy a replicar mis tarjetas 
-                         usando las etiquetas semánticas blockquote, h4 y small para que W3C no me ponga problema -->
+                    <!-- NOTA: Desde JS voy a replicar mis tarjetas 
+                        usando las etiquetas semánticas blockquote, h4 y small para que W3C no me ponga problema -->
                 </div>
             </section>
         </section>
@@ -78,7 +76,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 3: FORMULARIO DE INSCRIPCIÓN - Traduje mi código reactivo de Angular a nativo -->
+        <!-- SECCIÓN 3: FORMULARIO DE INSCRIPCIÓN -->
         <section id="inscripcion" class="oculto">
             <div class="section-container">
                 <div class="page-container">
@@ -112,7 +110,7 @@
                             </div>
                             
                             <!-- Campo sobre el Área de Interés Requerido para segmentar avisos -->
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label for="area-interes">Área de Interés Principal:</label>
                                 <select id="area-interes" name="area" required class="select-nativo">
                                     <option value="" disabled selected>-- Selecciona un área --</option>
@@ -121,7 +119,7 @@
                                     <option value="emprendimiento">Emprendimiento y Modelos de Negocio</option>
                                 </select>
                                 <span id="error-area" class="error-text oculto">Por favor, selecciona una temática de tu interés.</span>
-                             </div>      
+                            </div>      
 
                             <!-- Botón de envío nativo -->
                             <button type="submit" id="btn-enviar-formulario" class="btn-submit">Enviar Registro</button>
@@ -191,7 +189,7 @@
             </div>
         </section>
 
-            <!-- NOTA PARA MÍ: Ventana modal flotante para la inscripción directa a un curso específico -->
+            <!-- NOTA: Ventana modal flotante para la inscripción directa a un curso específico -->
     <div id="modal-curso" class="modal-overlay oculto">
         <div class="modal-content">
             <button type="button" id="btn-cerrar-modal" class="modal-close-btn">&times;</button>

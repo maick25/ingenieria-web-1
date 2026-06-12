@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MI BITÁCORA DE ESTUDIO: Datos de los Cursos (Clonados de mi base de datos)
+MI BITÁCORA DE ESTUDIO: Datos de los Cursos (Clonados de mi base de datos)
    ========================================================================== */
 const misCursos = [
     {
@@ -45,7 +45,7 @@ const misTestimonios = [
 ];
 
 /* ==========================================================================
-   1. SISTEMA NATIVO DE NAVEGACIÓN SPA (Control de pestañas y bloques dinámicos)
+1. SISTEMA NATIVO DE NAVEGACIÓN SPA (Control de pestañas y bloques dinámicos)
    ========================================================================== */
 function navegarSPA(idSeccion, evento) {
     if (evento) {
@@ -88,7 +88,7 @@ function navegarSPA(idSeccion, evento) {
 }
 
 /* ==========================================================================
-   2. INYECCIÓN DINÁMICA DE MIS TARJETAS (Clon idéntico de Angular)
+2. INYECCIÓN DINÁMICA DE MIS TARJETAS (Clon idéntico de Angular)
    ========================================================================== */
 function inicializarContenidoHome() {
     const contenedorCursos = document.getElementById('contenedor-cursos');
@@ -182,7 +182,7 @@ function limpiarErroresModal() {
 }
 
 /* ==========================================================================
-   3. VALIDACIÓN DE LOS FORMULARIOS CON EXPRESIONES REGULARES (RegEx Nativo)
+3. VALIDACIÓN DE LOS FORMULARIOS CON EXPRESIONES REGULARES (RegEx Nativo)
    ========================================================================== */
 function configurarFormularios() {
     const formNotificaciones = document.getElementById('form-registro-nativo');
@@ -293,7 +293,7 @@ function configurarFormularios() {
 }
 
 /* ==========================================================================
-   4. SISTEMA DE BÚSQUEDA DE CURSOS INTERNOS (Filtro en tiempo real)
+4. SISTEMA DE BÚSQUEDA DE CURSOS INTERNOS (Filtro en tiempo real)
    ========================================================================== */
 function inicializarBuscadorCursos() {
     const btnBuscar = document.getElementById('btn-buscar');
@@ -348,7 +348,7 @@ function inicializarBuscadorCursos() {
 }
 
 /* ==========================================================================
-   5. HERRAMIENTAS DE ACCESIBILIDAD (Alto Contraste y Control de Fuente)
+5. HERRAMIENTAS DE ACCESIBILIDAD (Alto Contraste y Control de Fuente)
    ========================================================================== */
 function inicializarAccesibilidad() {
     const btnContraste = document.getElementById('btn-contraste');
@@ -375,7 +375,7 @@ function inicializarAccesibilidad() {
 }
 
 /* ==========================================================================
-   DISPARADOR INICIALIZADOR GLOBAL
+DISPARADOR INICIALIZADOR GLOBAL
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     inicializarContenidoHome();
