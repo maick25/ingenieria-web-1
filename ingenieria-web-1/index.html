@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educ_Technology | Aprende, crece y transforma tu futuro digital</title>
+    <!-- Fuente principal del proyecto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Librería de iconos profesional: Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+    <!-- Hoja de estilos principal -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Marquesina superior con mensajes destacados -->
+    <section class="marquesina" aria-label="Avisos destacados de Educ_Technology">
+        <div class="mensajes">
+            <div class="mensaje"><i class="fa-solid fa-bullhorn app-icon" aria-hidden="true"></i>Cursos gratuitos para fortalecer tus habilidades digitales</div>
+            <div class="mensaje"><i class="fa-solid fa-code app-icon" aria-hidden="true"></i>HTML5, CSS3 y JavaScript Vanilla en una SPA nativa</div>
+            <div class="mensaje"><i class="fa-solid fa-globe app-icon" aria-hidden="true"></i>Proyecto alineado con el ODS 4: Educación de Calidad</div>
+            <div class="mensaje"><i class="fa-solid fa-universal-access app-icon" aria-hidden="true"></i>Diseño responsive con herramientas de accesibilidad</div>
+        </div>
+    </section>
+
+    <!-- Menú de navegación principal -->
+    <header class="main-navigation">
+        <div class="nav-container">
+            <button type="button" class="logo logo-btn" onclick="navegarSPA('inicio', event)" aria-label="Volver al inicio">Educ_Technology</button>
+            <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">Menú</button>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('buscador', event)">Buscador</button></li>
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('inscripcion', event)">Alerta nuevos cursos</button></li>
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('ods', event)">Impacto</button></li>
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('accesibilidad', event)">Accesibilidad</button></li>
+                    <li><button type="button" class="nav-btn" onclick="navegarSPA('bitacora', event)">Bitácora</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal de la aplicación -->
+
+    <main id="main-content">
+
+        <!-- SECCIÓN 1: INICIO (HOME) -->
+        <section id="inicio">
+
+            <header class="hero-banner">
+                <div class="hero-texto">
+                    <span class="hero-etiqueta">Educación gratuita y de calidad para todos</span>
+                    <h1>Desarrolla habilidades para el futuro digital</h1>
+                    <p>Explora rutas de aprendizaje, conoce instructores expertos y fortalece tus competencias tecnológicas a tu ritmo.</p>
+                    <div class="hero-actions">
+                        <button type="button" class="btn-hero btn-hero-primary" onclick="navegarSPA('buscador', event)">Explorar cursos</button>
+                        <button type="button" class="btn-hero btn-hero-secondary" onclick="navegarSPA('inscripcion', event)">Recibir alertas</button>
+                    </div>
+                </div>
+            </header>
+
+
+
+            <!-- Estadísticas principales del proyecto -->
+            <section class="home-stats-section" aria-label="Indicadores principales de Educ_Technology">
+                <div id="home-stats" class="home-stats-grid"></div>
+            </section>
+
+            <!-- Rutas de aprendizaje -->
+            <section class="learning-paths-section">
+                <div class="section-heading-row">
+                    <div>
+                        <h2>Rutas de aprendizaje</h2>
+                        <p class="section-subtitle">Sigue una ruta seleccionada y conviértete en experto paso a paso.</p>
+                    </div>
+                </div>
+                <div id="contenedor-rutas" class="learning-paths-grid"></div>
+            </section>
+
+            <!-- Instructores -->
+            <section class="instructors-section">
+                <div class="section-heading-row">
+                    <div>
+                        <h2>Conoce a nuestros instructores</h2>
+                        <p class="section-subtitle">Conoce el perfil, la experiencia y las áreas de especialidad de quienes acompañan tu aprendizaje en Educ_Technology.</p>
+                    </div>
+                </div>
+                <div id="contenedor-instructores" class="instructors-grid"></div>
+            </section>
+
+            <!-- Curso destacado -->
+            <section class="featured-course-section">
+                <div id="curso-destacado-home" class="featured-course-card"></div>
+            </section>
+
+            <!-- Catálogo de Cursos en Cuadrícula -->
+            <main class="catalog-layout">
+                <div id="contenedor-cursos" class="grid-cursos">
+                    <!-- Contenedor dinámico para las tarjetas de cursos -->
+                    <p id="mensaje-vacio-cursos" class="mensaje-alerta">No hay programas disponibles en este momento.</p>
+                </div>
+            </main>
+
+            <!-- Testimonios de usuarios piloto -->
+            <section class="testimonials-section">
+                <h2>Lo que dicen nuestros estudiantes</h2>
+                <p class="section-subtitle">Historias reales de personas que están transformando su futuro con Educ_Technology.</p>
+                <div id="contenedor-testimonios" class="testimonials-grid testimonials-grid-pro">
+                    <!-- Contenedor dinámico para testimonios -->
+                </div>
+                <div id="testimonios-stats" class="testimonios-stats"></div>
+            </section>
+        </section>
+
+        <!-- SECCIÓN 2: BUSCADOR -->
+        <!-- Buscador con filtros por nombre y categoría -->
+        <section id="buscador" class="oculto">
+            <div class="section-container">
+                <nav class="breadcrumb" aria-label="Migas de pan"><button type="button" onclick="navegarSPA('inicio', event)">Inicio</button><span>›</span><strong>Buscador</strong></nav>
+                <h2>Buscador de Recursos Académicos</h2>
+                <p class="section-subtitle">Filtra por nombre o categoría para encontrar tu formación ideal.</p>
+
+                <div class="buscador-controles">
+                    <div class="search-box-container">
+                        <input type="text" id="input-busqueda" placeholder="Ej. javascript, css, emprendimiento...">
+                        <button type="button" id="btn-buscar">Buscar</button>
+                    </div>
+
+                    <!-- Filtros rápidos por categoría -->
+                    <div class="filtros-categoria">
+                        <span class="filtro-label">Filtrar por categoría:</span>
+                        <button type="button" class="btn-filtro activo" data-categoria="todos">Todos</button>
+                        <button type="button" class="btn-filtro" data-categoria="Competencias Fundamentales">Competencias</button>
+                        <button type="button" class="btn-filtro" data-categoria="Innovación Tecnológica">Innovación</button>
+                        <button type="button" class="btn-filtro" data-categoria="Emprendimiento Digital">Emprendimiento</button>
+                        <button type="button" class="btn-filtro btn-filtro-favoritos" data-categoria="favoritos">Mis favoritos</button>
+                    </div>
+                </div>
+
+                <div class="catalog-layout">
+                    <div id="resultados-api" class="grid-cursos">
+                        <p class="mensaje-espera">Ingresa un término o selecciona una categoría para comenzar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: FORMULARIO DE INSCRIPCIÓN -->
+        <section id="inscripcion" class="oculto">
+            <div class="section-container">
+                <nav class="breadcrumb" aria-label="Migas de pan"><button type="button" onclick="navegarSPA('inicio', event)">Inicio</button><span>›</span><strong>Alerta nuevos cursos</strong></nav>
+                <div class="page-container">
+                    <section class="form-section">
+                        <h2>Recibe Notificaciones de Nuevos Cursos</h2>
+                        <p class="section-subtitle">Déjanos tus datos para avisarte cuando lancemos nuevos programas.</p>
+
+                        <!-- Formulario nativo con validación personalizada -->
+                        <form id="form-registro-nativo" novalidate class="custom-form">
+                            <div class="form-group">
+                                <label for="nombre">Nombre y Apellidos Completo:</label>
+                                <input id="nombre" type="text" name="nombre" placeholder="Ej. Miguel Ángel" required>
+                                <span id="error-nombre" class="error-text oculto">El nombre completo es requerido (mínimo 3 caracteres, solo letras).</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="correo">Correo Electrónico:</label>
+                                <input id="correo" type="email" name="correo" placeholder="ejemplo@gmail.com" required>
+                                <span id="error-correo" class="error-text oculto">Ingresa un correo electrónico válido.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Número de Contacto:</label>
+                                <input id="telefono" type="tel" name="telefono" placeholder="Ej. 3101234567" required>
+                                <span id="error-telefono" class="error-text oculto">El teléfono debe contener entre 7 y 10 dígitos numéricos.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="area-interes">Área de Interés Principal:</label>
+                                <select id="area-interes" name="area" required class="select-nativo">
+                                    <option value="" disabled selected>-- Selecciona un área --</option>
+                                    <option value="frontend">Desarrollo Frontend & Estándares W3C</option>
+                                    <option value="emergentes">Tecnologías Emergentes</option>
+                                    <option value="emprendimiento">Emprendimiento y Modelos de Negocio</option>
+                                </select>
+                                <span id="error-area" class="error-text oculto">Por favor, selecciona una temática de tu interés.</span>
+                            </div>
+                            <button type="submit" id="btn-enviar-formulario" class="btn-submit">Enviar Registro</button>
+                        </form>
+                    </section>
+
+                    <section id="bloque-redes-sociales" class="social-section">
+                        <h3>Conéctate con nuestro ecosistema digital</h3>
+                        <p>Síguenos en nuestras redes oficiales para estar al tanto de talleres y eventos de Educ_Technology.</p>
+                        <div class="social-links">
+                            <a href="https://facebook.com" target="_blank" class="social-item fb">Facebook</a>
+                            <a href="https://instagram.com" target="_blank" class="social-item ig">Instagram</a>
+                            <a href="https://linkedin.com" target="_blank" class="social-item ln">LinkedIn</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: IMPACTO SOCIAL ODS -->
+        <!-- Sección informativa sobre el impacto social y el ODS 4 -->
+        <section id="ods" class="oculto">
+            <div class="section-container">
+                <nav class="breadcrumb" aria-label="Migas de pan"><button type="button" onclick="navegarSPA('inicio', event)">Inicio</button><span>›</span><strong>Impacto ODS</strong></nav>
+                <h2>Impacto Social: Educación de Calidad</h2>
+                <p class="section-subtitle">Nuestro compromiso con el Objetivo de Desarrollo Sostenible #4 de la ONU.</p>
+
+                <div class="ods-hero">
+                    <div class="ods-badge">ODS 4</div>
+                    <p class="ods-descripcion">En <strong>Educ_Technology</strong> creemos que el conocimiento no debería tener barreras económicas. Por eso todos nuestros cursos son gratuitos y están diseñados para quienes quieren crecer profesionalmente desde cero.</p>
+                </div>
+
+                <div class="ods-stats">
+                    <!-- Indicadores generales de impacto del proyecto -->
+                    <div class="stat-card">
+                        <span class="stat-numero">3</span>
+                        <span class="stat-label">Cursos gratuitos disponibles</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-numero">120h</span>
+                        <span class="stat-label">De contenido formativo</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-numero">100%</span>
+                        <span class="stat-label">Acceso sin costo</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-numero">3</span>
+                        <span class="stat-label">Áreas de formación</span>
+                    </div>
+                </div>
+
+                <div class="ods-pilares">
+                    <div class="pilar-card">
+                        <div class="pilar-icono"><i class="fa-solid fa-book-open app-icon" aria-hidden="true"></i></div>
+                        <h3>Acceso al Conocimiento</h3>
+                        <p>Eliminamos la brecha digital ofreciendo formación técnica de calidad sin costo, disponible para cualquier persona con conexión a internet.</p>
+                    </div>
+                    <div class="pilar-card">
+                        <div class="pilar-icono"><i class="fa-solid fa-briefcase app-icon" aria-hidden="true"></i></div>
+                        <h3>Empleabilidad Digital</h3>
+                        <p>Preparamos a estudiantes y emprendedores con habilidades reales del mercado laboral actual, desde desarrollo web hasta modelos de negocio.</p>
+                    </div>
+                    <div class="pilar-card">
+                        <div class="pilar-icono"><i class="fa-solid fa-seedling app-icon" aria-hidden="true"></i></div>
+                        <h3>Crecimiento Sostenible</h3>
+                        <p>Fomentamos el emprendimiento responsable alineado con los ODS, formando profesionales que entiendan su impacto en la sociedad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN 5: ACCESIBILIDAD -->
+        <!-- Herramientas de accesibilidad para personalizar la visualización -->
+        <section id="accesibilidad" class="oculto">
+            <div class="section-container">
+                <nav class="breadcrumb" aria-label="Migas de pan"><button type="button" onclick="navegarSPA('inicio', event)">Inicio</button><span>›</span><strong>Accesibilidad</strong></nav>
+                <h2>Herramientas de Accesibilidad</h2>
+                <p class="section-subtitle">Personaliza la visualización del sitio para mejorar la experiencia de lectura.</p>
+
+                <div class="accessibility-panel">
+                    <div class="accessibility-card">
+                        <h3>Controles visuales</h3>
+                        <p>Usa estas opciones para adaptar el contraste y el tamaño del texto según tus necesidades.</p>
+
+                        <div class="accessibility-controls">
+                            <button type="button" id="btn-fuente-mas" class="btn-control" aria-label="Aumentar tamaño de letra">Aumentar letra A+</button>
+                            <button type="button" id="btn-contraste" class="btn-control btn-control--contraste" aria-label="Alternar alto contraste">Modo contraste</button>
+                            <button type="button" id="btn-modo-oscuro" class="btn-control btn-control--oscuro" aria-label="Activar modo oscuro">Modo oscuro</button>
+                            <button type="button" id="btn-fuente-menos" class="btn-control" aria-label="Reducir tamaño de letra">Reducir letra A−</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: BITÁCORA Y CRÉDITOS -->
+        <!-- Bitácora con créditos, decisiones de diseño y registro de cambios -->
+        <section id="bitacora" class="oculto">
+            <div class="section-container">
+                <nav class="breadcrumb" aria-label="Migas de pan"><button type="button" onclick="navegarSPA('inicio', event)">Inicio</button><span>›</span><strong>Bitácora</strong></nav>
+                <h2>Bitácora de Desarrollo</h2>
+                <p class="section-subtitle">El proceso detrás de Educ_Technology: decisiones, tecnologías y aprendizajes.</p>
+
+                <div class="bitacora-grid">
+
+                    <div class="autor-info">
+                        <h3>Autoría del Proyecto</h3>
+                        <p>Desarrollado como proyecto integrador de la asignatura <strong>Ingeniería Web I</strong> en UNIMINUTO.</p>
+                        <br>
+                        <div class="autor-detalle">
+                            <span class="autor-label">Estudiantes</span>
+                            <ul class="autor-lista">
+                                <li>Maickyl Miguel Candeno Navarro</li>
+                                <li>Bayron Esteban Caicedo Tellez</li>
+                                <li>Adrini Abril Sandoval</li>
+                            </ul>
+                        </div>
+                        <p><strong>Docente:</strong> Kellyn Johanna Delgado Jaimes</p>
+                        <p><strong>Período:</strong> 2026-1</p>
+                        <br>
+                        <!-- Decisiones principales de diseño y estructura -->
+                        <p><strong>Tecnologías usadas:</strong> HTML5 semántico, CSS3 con Flexbox y media queries, JavaScript ES6 nativo, Google Fonts (Nunito Sans).</p>
+                    </div>
+
+                    <div class="decisiones-box">
+                        <h3>Decisiones de Diseño</h3>
+                        <!-- Justificación de la identidad visual utilizada -->
+                        <ul class="decisiones-lista">
+                            <li><strong>Fuente Nunito Sans:</strong> Elegida por ser san-serif, transmite modernidad y facilidad de lectura, ideal para una plataforma educativa.</li>
+                            <li><strong>Azul principal (#2563eb):</strong> Comunica confianza, seguridad y tecnología. Exactamente lo que una plataforma educativa debe proyectar.</li>
+                            <li><strong>Verde en precios (#16a34a):</strong> Asociado a lo positivo y gratuito. Refuerza que los cursos son accesibles.</li>
+                            <li><strong>Fondo oscuro (#0f172a):</strong> Para el hero y la sección de redes, crea contraste visual y da seriedad al proyecto.</li>
+                            <li><strong>Diseño SPA:</strong> Una sola página con navegación dinámica para evitar recargas y mejorar la experiencia de usuario.</li>
+                        </ul>
+                    </div>
+
+                    <div class="sitemap-box">
+                        <h3>Mapa del Sitio</h3>
+                        <ul>
+                            <li><a href="#" onclick="navegarSPA('inicio', event)">Inicio — Catálogo de cursos y testimonios</a></li>
+                            <li><a href="#" onclick="navegarSPA('buscador', event)">Buscador — Filtros por nombre y categoría</a></li>
+                            <li><a href="#" onclick="navegarSPA('inscripcion', event)">Alerta nuevos cursos — Formulario con RegEx</a></li>
+                            <li><a href="#" onclick="navegarSPA('ods', event)">Impacto — Compromiso ODS 4 con estadísticas</a></li>
+                            <li><a href="#" onclick="navegarSPA('accesibilidad', event)">Accesibilidad — Contraste y tamaño de letra</a></li>
+                            <li><a href="#" onclick="navegarSPA('bitacora', event)">Bitácora — Créditos y decisiones de diseño</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="tecnologias-box">
+                        <h3>Registro de Cambios</h3>
+                        <!-- Registro de versiones y mejoras implementadas -->
+                        <ul class="changelog-lista">
+                            <li><span class="version">v1.0</span> Estructura base HTML semántico + CSS inicial</li>
+                            <li><span class="version">v1.1</span> Sistema SPA con JavaScript vanilla</li>
+                            <li><span class="version">v1.2</span> Formulario con validación RegEx + modal</li>
+                            <li><span class="version">v1.3</span> Sección de accesibilidad con controles de contraste y tamaño de letra</li>
+                            <li><span class="version">v1.4</span> Media queries para móvil, tablet y escritorio</li>
+                            <li><span class="version">v1.5</span> Filtros de buscador, ODS visual, bitácora completa</li>
+                            <li><span class="version">v1.6</span> Favoritos funcionales, rutas de aprendizaje, instructores y curso destacado</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal para inscripción directa desde las tarjetas de curso -->
+        <div id="modal-curso" class="modal-overlay oculto">
+            <div class="modal-content">
+                <button type="button" id="btn-cerrar-modal" class="modal-close-btn">&times;</button>
+                <h2 id="modal-titulo-curso">Inscripción al Curso</h2>
+                <p class="modal-subtitle">Completa tus datos para obtener acceso inmediato al material.</p>
+                <form id="form-modal-curso" novalidate class="custom-form">
+                    <div class="form-group">
+                        <label for="modal-nombre">Nombre y Apellidos Completo:</label>
+                        <input id="modal-nombre" type="text" placeholder="Ej. Miguel Ángel" required>
+                        <span id="error-modal-nombre" class="error-text oculto">El nombre es requerido (mínimo 3 caracteres).</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-correo">Correo Electrónico:</label>
+                        <input id="modal-correo" type="email" placeholder="ejemplo@gmail.com" required>
+                        <span id="error-modal-correo" class="error-text oculto">Ingresa un correo electrónico válido.</span>
+                    </div>
+                    <button type="submit" class="btn-submit">Confirmar Acceso al Curso</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de perfil de instructor -->
+        <div id="modal-instructor" class="modal-overlay oculto">
+            <div class="modal-content modal-content-instructor">
+                <button type="button" id="btn-cerrar-modal-instructor" class="modal-close-btn">&times;</button>
+                <div id="modal-instructor-contenido"></div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER PROFESIONAL: cierre visible del sitio con navegación, créditos y redes -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>Educ_Technology</h2>
+                <p>Plataforma educativa orientada al acceso gratuito a formación tecnológica y habilidades digitales.</p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Mapa de navegación del sitio">
+                <h3>Mapa del sitio</h3>
+                <ul>
+                    <li><button type="button" onclick="navegarSPA('inicio', event)">Inicio</button></li>
+                    <li><button type="button" onclick="navegarSPA('buscador', event)">Buscador</button></li>
+                    <li><button type="button" onclick="navegarSPA('inscripcion', event)">Alerta nuevos cursos</button></li>
+                    <li><button type="button" onclick="navegarSPA('ods', event)">Impacto ODS</button></li>
+                    <li><button type="button" onclick="navegarSPA('accesibilidad', event)">Accesibilidad</button></li>
+                    <li><button type="button" onclick="navegarSPA('bitacora', event)">Bitácora</button></li>
+                </ul>
+            </nav>
+
+            <div class="footer-info">
+                <h3>Proyecto académico</h3>
+                <p><strong>Asignatura:</strong> Ingeniería Web I</p>
+                <p><strong>Enfoque:</strong> ODS 4 — Educación de Calidad</p>
+                <div class="footer-social">
+                    <a href="https://github.com/maick25/ingenieria-web-1" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositorio de GitHub">GitHub</a>
+                    <a href="https://www.figma.com/design/h5C45w7NahrJfKbQASu7ia/Ingeneria-web-1" target="_blank" rel="noopener noreferrer" aria-label="Abrir maqueta en Figma">Figma</a>
+                    <a href="https://www.un.org/sustainabledevelopment/es/education/" target="_blank" rel="noopener noreferrer" aria-label="Consultar ODS 4 Educación de Calidad">ODS 4</a>
+                    <a href="docs/planteamiento-proyecto.one" target="_blank" rel="noopener noreferrer" aria-label="Abrir planteamiento del proyecto">Planteamiento</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Educ_Technology. Proyecto académico desarrollado para UNIMINUTO.</p>
+        </div>
+    </footer>
+
+    <div id="toast-feedback" class="toast-feedback oculto" role="status" aria-live="polite"></div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
