@@ -25,22 +25,112 @@
         </div>
     </section>
 
-    <!-- Menú de navegación principal -->
-    <header class="main-navigation">
-        <div class="nav-container">
-            <button type="button" class="logo logo-btn" onclick="navegarSPA('inicio', event)" aria-label="Volver al inicio">Educ_Technology</button>
-            <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">Menú</button>
-            <nav>
-                <ul class="nav-links" id="nav-links">
-                    <li><button type="button" class="nav-btn" onclick="navegarSPA('buscador', event)">Buscador</button></li>
-                    <li><button type="button" class="nav-btn" onclick="navegarSPA('inscripcion', event)">Alerta nuevos cursos</button></li>
-                    <li><button type="button" class="nav-btn" onclick="navegarSPA('ods', event)">Impacto</button></li>
-                    <li><button type="button" class="nav-btn" onclick="navegarSPA('accesibilidad', event)">Accesibilidad</button></li>
-                    <li><button type="button" class="nav-btn" onclick="navegarSPA('bitacora', event)">Bitácora</button></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<!-- Menú de navegación principal -->
+<header class="main-navigation">
+    <div class="nav-container">
+
+        <button
+            type="button"
+            class="logo logo-btn"
+            onclick="navegarSPA('inicio', event)"
+            aria-label="Volver al inicio">
+            Educ_Technology
+        </button>
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false">
+            Menú
+        </button>
+
+        <nav>
+            <ul class="nav-links" id="nav-links">
+
+                <li>
+                    <button
+                        type="button"
+                        class="nav-btn"
+                        onclick="navegarSPA('buscador', event)">
+                        Buscador
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        type="button"
+                        class="nav-btn"
+                        onclick="navegarSPA('inscripcion', event)">
+                        Alerta nuevos cursos
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        type="button"
+                        class="nav-btn"
+                        onclick="navegarSPA('ods', event)">
+                        Impacto
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        type="button"
+                        class="nav-btn"
+                        onclick="navegarSPA('accesibilidad', event)">
+                        Accesibilidad
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        type="button"
+                        class="nav-btn"
+                        onclick="navegarSPA('bitacora', event)">
+                        Bitácora
+                    </button>
+                </li>
+
+                <!-- Accesos de usuario e idioma -->
+
+                <li>
+                    <button
+                        type="button"
+                        class="auth-btn auth-login"
+                        id="btn-login">
+                        Iniciar sesión
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        type="button"
+                        class="auth-btn auth-register"
+                        id="btn-register">
+                        Regístrate
+                    </button>
+                </li>
+
+                <li>
+                    <button
+                        type="button"
+                        class="language-btn"
+                        id="btn-language"
+                        aria-label="Cambiar idioma">
+                        <i
+                            class="fa-solid fa-globe app-icon"
+                            aria-hidden="true"></i>
+                    </button>
+                </li>
+
+            </ul>
+        </nav>
+
+    </div>
+</header>
 
     <!-- Contenido principal de la aplicación -->
 
@@ -370,6 +460,77 @@
                 </form>
             </div>
         </div>
+
+        <!-- Modal de inicio de sesión -->
+<div id="modal-login" class="modal-overlay oculto">
+    <div class="modal-content modal-auth">
+        <button type="button" id="btn-cerrar-login" class="modal-close-btn">&times;</button>
+        <h2>Iniciar sesión</h2>
+        <p class="modal-subtitle">Ingresa con tu correo para continuar en Educ_Technology.</p>
+
+        <form id="form-login" novalidate class="custom-form">
+            <div class="form-group">
+                <label for="login-correo">Correo Electrónico:</label>
+                <input id="login-correo" type="email" placeholder="ejemplo@gmail.com" required>
+                <span id="error-login-correo" class="error-text oculto">Ingresa un correo electrónico válido.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="login-password">Contraseña:</label>
+                <input id="login-password" type="password" placeholder="Mínimo 6 caracteres" required>
+                <span id="error-login-password" class="error-text oculto">La contraseña debe tener mínimo 6 caracteres.</span>
+            </div>
+
+            <button type="submit" class="btn-submit">Entrar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de registro de usuario -->
+<div id="modal-register" class="modal-overlay oculto">
+    <div class="modal-content modal-auth">
+        <button type="button" id="btn-cerrar-register" class="modal-close-btn">&times;</button>
+        <h2>Regístrate</h2>
+        <p class="modal-subtitle">Crea una cuenta para recibir recomendaciones y novedades académicas.</p>
+
+        <form id="form-register" novalidate class="custom-form">
+            <div class="form-group">
+                <label for="register-nombre">Nombre completo:</label>
+                <input id="register-nombre" type="text" placeholder="Ej. Miguel Ángel Torres" required>
+                <span id="error-register-nombre" class="error-text oculto">El nombre debe tener mínimo 3 caracteres.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="register-correo">Correo Electrónico:</label>
+                <input id="register-correo" type="email" placeholder="ejemplo@gmail.com" required>
+                <span id="error-register-correo" class="error-text oculto">Ingresa un correo electrónico válido.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="register-password">Contraseña:</label>
+                <input id="register-password" type="password" placeholder="Mínimo 6 caracteres" required>
+                <span id="error-register-password" class="error-text oculto">La contraseña debe tener mínimo 6 caracteres.</span>
+            </div>
+
+            <button type="submit" class="btn-submit">Crear cuenta</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de selección de idioma -->
+<div id="modal-language" class="modal-overlay oculto">
+    <div class="modal-content modal-language">
+        <button type="button" id="btn-cerrar-language" class="modal-close-btn">&times;</button>
+        <h2>Selecciona un idioma</h2>
+        <p class="modal-subtitle">Elige el idioma de visualización de la plataforma.</p>
+
+        <div class="language-options">
+            <button type="button" class="language-option" data-lang="es">Español</button>
+            <button type="button" class="language-option" data-lang="en">English</button>
+            <button type="button" class="language-option" data-lang="pt">Português</button>
+        </div>
+    </div>
+</div>
 
         <!-- Modal de perfil de instructor -->
         <div id="modal-instructor" class="modal-overlay oculto">

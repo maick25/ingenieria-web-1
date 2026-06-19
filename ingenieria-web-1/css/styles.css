@@ -1,20 +1,20 @@
 /* ==========================================================================
-   PALETA DE COLORES — Educ_Technology
-   Variables principales para mantener consistencia visual en todo el sitio.
+PALETA DE COLORES — Educ_Technology
+Variables principales para mantener consistencia visual en todo el sitio.
    ========================================================================== */
 /*
-   COLOR PRIMARIO:    #2563eb  — Azul tecnológico (nav, botones, acentos)
-   COLOR SECUNDARIO:  #0f172a  — Azul muy oscuro / casi negro (hero, fondos)
-   COLOR ACENTO:      #16a34a  — Verde (precios, gratuito, ODS)
-   COLOR SUPERFICIE:  #f8fafc  — Gris muy claro (fondo general)
-   COLOR BORDE:       #e2e8f0  — Gris suave (separadores, bordes)
-   BLANCO:            #ffffff  — Tarjetas, modales, formularios
-   TEXTO PRINCIPAL:   #1e293b  — Casi negro, lectura cómoda
-   TEXTO SECUNDARIO:  #64748b  — Gris medio, subtítulos y metadatos
+COLOR PRIMARIO:    #2563eb  — Azul tecnológico (nav, botones, acentos)
+COLOR SECUNDARIO:  #0f172a  — Azul muy oscuro / casi negro (hero, fondos)
+COLOR ACENTO:      #16a34a  — Verde (precios, gratuito, ODS)
+COLOR SUPERFICIE:  #f8fafc  — Gris muy claro (fondo general)
+COLOR BORDE:       #e2e8f0  — Gris suave (separadores, bordes)
+BLANCO:            #ffffff  — Tarjetas, modales, formularios
+TEXTO PRINCIPAL:   #1e293b  — Casi negro, lectura cómoda
+TEXTO SECUNDARIO:  #64748b  — Gris medio, subtítulos y metadatos
 */
 
 /* ==========================================================================
-   RESET Y BASE GLOBAL
+RESET Y BASE GLOBAL
    ========================================================================== */
 * {
     margin: 0;
@@ -46,7 +46,7 @@ body {
 }
 
 /* ==========================================================================
-   MENÚ DE NAVEGACIÓN SUPERIOR FIJO
+MENÚ DE NAVEGACIÓN SUPERIOR FIJO
    ========================================================================== */
 .main-navigation {
     background-color: #ffffff;
@@ -111,7 +111,7 @@ body {
 }
 
 /* ==========================================================================
-   HERO BANNER — Ahora centrado sin los botones dentro
+HERO BANNER — Ahora centrado sin los botones dentro
    ========================================================================== */
 .hero-banner {
     text-align: center;
@@ -135,7 +135,7 @@ body {
 }
 
 /* ==========================================================================
-   CATÁLOGO DE CURSOS
+CATÁLOGO DE CURSOS
    ========================================================================== */
 .catalog-layout {
     max-width: 1200px;
@@ -150,7 +150,7 @@ body {
 }
 
 /* ==========================================================================
-   TARJETAS DE CURSOS
+TARJETAS DE CURSOS
    ========================================================================== */
 .tarjeta-curso {
     background: #ffffff;
@@ -249,8 +249,8 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN DE TESTIMONIOS
-   Tarjetas con borde suave e interacción visual al pasar el cursor.
+SECCIÓN DE TESTIMONIOS
+Tarjetas con borde suave e interacción visual al pasar el cursor.
    ========================================================================== */
 .testimonials-section {
     padding: 4rem 2rem;
@@ -318,7 +318,7 @@ body {
 }
 
 /* ==========================================================================
-   BUSCADOR CON FILTROS DE CATEGORÍA
+BUSCADOR CON FILTROS DE CATEGORÍA
    ========================================================================== */
 .section-container {
     max-width: 1200px;
@@ -433,7 +433,7 @@ body {
 }
 
 /* ==========================================================================
-   FORMULARIO DE INSCRIPCIÓN Y REDES SOCIALES
+FORMULARIO DE INSCRIPCIÓN Y REDES SOCIALES
    ========================================================================== */
 .page-container {
     max-width: 1000px;
@@ -588,8 +588,8 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN ODS — IMPACTO VISUAL
-   Presentación del compromiso educativo mediante indicadores y tarjetas.
+SECCIÓN ODS — IMPACTO VISUAL
+Presentación del compromiso educativo mediante indicadores y tarjetas.
    ========================================================================== */
 .ods-hero {
     display: flex;
@@ -696,8 +696,8 @@ body {
 }
 
 /* ==========================================================================
-   BITÁCORA EXPANDIDA
-   Distribución de autoría, decisiones de diseño, mapa del sitio y cambios.
+BITÁCORA EXPANDIDA
+Distribución de autoría, decisiones de diseño, mapa del sitio y cambios.
    ========================================================================== */
 .bitacora-grid {
     display: grid;
@@ -786,7 +786,7 @@ body {
 }
 
 /* ==========================================================================
-   MODAL FLOTANTE
+MODAL FLOTANTE
    ========================================================================== */
 .modal-overlay {
     position: fixed;
@@ -837,8 +837,8 @@ body {
 }
 
 /* ==========================================================================
-   MODO OSCURO / ALTO CONTRASTE
-   Variantes visuales activadas desde los controles de accesibilidad.
+MODO OSCURO / ALTO CONTRASTE
+Variantes visuales activadas desde los controles de accesibilidad.
    ========================================================================== */
 body.alto-contraste {
     background-color: #0a0a0a !important;
@@ -904,7 +904,7 @@ body.alto-contraste .form-group select {
 }
 
 /* ==========================================================================
-   TAMAÑO DE FUENTE: GRANDE Y PEQUEÑO
+TAMAÑO DE FUENTE: GRANDE Y PEQUEÑO
    ========================================================================== */
 body.fuente-grande { font-size: 1.2rem !important; }
 body.fuente-grande h1 { font-size: 3rem !important; }
@@ -917,8 +917,8 @@ body.fuente-pequena h2 { font-size: 1.4rem !important; }
 body.fuente-pequena h3 { font-size: 1.1rem !important; }
 
 /* ==========================================================================
-   MEDIA QUERIES — RESPONSIVIDAD
-   Ajustes de layout para tabletas, celulares y pantallas pequeñas.
+MEDIA QUERIES — RESPONSIVIDAD
+Ajustes de layout para tabletas, celulares y pantallas pequeñas.
    ========================================================================== */
 
 /* TABLET (máximo 900px) */
@@ -965,7 +965,7 @@ body.fuente-pequena h3 { font-size: 1.1rem !important; }
 
 
 /* ==========================================================================
-   FOOTER PROFESIONAL — mapa del sitio, créditos y redes
+FOOTER PROFESIONAL — mapa del sitio, créditos y redes
    ========================================================================== */
 .site-footer {
     background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
@@ -1053,7 +1053,7 @@ body.fuente-pequena h3 { font-size: 1.1rem !important; }
 }
 
 /* ==========================================================================
-   AJUSTES RESPONSIVE EXTRA — menú móvil y accesibilidad sin tapar tarjetas
+AJUSTES RESPONSIVE EXTRA — menú móvil y accesibilidad sin tapar tarjetas
    ========================================================================== */
 @media (max-width: 900px) {
     .accesibilidad-rapida {
@@ -1137,7 +1137,7 @@ body.fuente-pequena h3 { font-size: 1.1rem !important; }
 }
 
 /* ==========================================================================
-   AJUSTE FINAL — ACCESIBILIDAD SIN BOTONES FLOTANTES
+AJUSTE FINAL — ACCESIBILIDAD SIN BOTONES FLOTANTES
    ========================================================================== */
 .accessibility-panel {
     max-width: 760px;
@@ -1223,7 +1223,7 @@ body.alto-contraste .accessibility-card p {
 
 
 /* ==========================================================================
-   MEJORAS FINALES DE INTERACCIÓN Y PRESENTACIÓN
+MEJORAS FINALES DE INTERACCIÓN Y PRESENTACIÓN
    ========================================================================== */
 .marquesina {
     width: 100%;
@@ -1514,7 +1514,7 @@ body.modo-oscuro .site-footer {
 }
 
 /* ==========================================================================
-   BUSCADOR TIPO PANEL ACADÉMICO — resultados compactos y diferentes al Home
+BUSCADOR TIPO PANEL ACADÉMICO — resultados compactos y diferentes al Home
    ========================================================================== */
 #buscador .catalog-layout {
     max-width: 1200px;
@@ -1784,8 +1784,8 @@ body.modo-oscuro .btn-detalle:hover {
 }
 
 /* ========================================================================== 
-   AJUSTE FINAL: VISIBILIDAD DEL LOGO EN MODO OSCURO Y ALTO CONTRASTE
-   Evita que el título Educ_Technology se pierda sobre fondos oscuros.
+AJUSTE FINAL: VISIBILIDAD DEL LOGO EN MODO OSCURO Y ALTO CONTRASTE
+Evita que el título Educ_Technology se pierda sobre fondos oscuros.
    ========================================================================== */
 body.modo-oscuro .logo,
 body.modo-oscuro .logo-btn {
@@ -1816,7 +1816,7 @@ body.alto-contraste .logo-btn:focus-visible {
 }
 
 /* ========================================================================== 
-   MEJORA DE CATÁLOGO: Favoritos y más cursos disponibles
+MEJORA DE CATÁLOGO: Favoritos y más cursos disponibles
    ========================================================================== */
 .acciones-curso {
     display: flex;
@@ -1883,7 +1883,7 @@ body.alto-contraste .btn-favorito {
 
 
 /* ========================================================================== 
-   HOME AVANZADO: Estadísticas, rutas, instructores y curso destacado
+HOME AVANZADO: Estadísticas, rutas, instructores y curso destacado
    ========================================================================== */
 .home-stats-section,
 .learning-paths-section,
@@ -2241,7 +2241,7 @@ body.alto-contraste .featured-course-card {
 
 
 /* ==========================================================================
-   TESTIMONIOS — PRESENTACIÓN VISUAL
+TESTIMONIOS — PRESENTACIÓN VISUAL
    ========================================================================== */
 .testimonials-section {
     background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
@@ -2465,7 +2465,7 @@ body.alto-contraste .testimonios-stats {
 
 
 /* ==========================================================================
-   AJUSTE FINAL: Portadas únicas de cursos en Home y testimonios limpios
+AJUSTE FINAL: Portadas únicas de cursos en Home y testimonios limpios
    ========================================================================== */
 .contenedor-imagen-tarjeta.curso-cover {
     height: 160px;
@@ -2670,7 +2670,7 @@ body.alto-contraste .testimonios-stats {
 
 
 /* ==========================================================================
-   AJUSTE VISUAL: portadas de cursos sin superposición y subtítulos limpios
+AJUSTE VISUAL: portadas de cursos sin superposición y subtítulos limpios
    ========================================================================== */
 .contenedor-imagen-tarjeta.curso-cover {
     height: 172px;
@@ -2783,9 +2783,9 @@ body.alto-contraste .testimonios-stats {
 
 
 /* ========================================================================== 
-   AJUSTE FINAL: Portadas limpias sin título duplicado
-   - La portada solo muestra categoría, icono y marca.
-   - El nombre del curso queda únicamente en el contenido de la tarjeta.
+AJUSTE FINAL: Portadas limpias sin título duplicado
+- La portada solo muestra categoría, icono y marca.
+- El nombre del curso queda únicamente en el contenido de la tarjeta.
    ========================================================================== */
 .contenedor-imagen-tarjeta.curso-cover {
     height: 172px;
@@ -2906,7 +2906,7 @@ body.alto-contraste .testimonios-stats {
 
 
 /* ==========================================================================
-   ICONOGRAFÍA UNIFICADA: Font Awesome
+ICONOGRAFÍA UNIFICADA: Font Awesome
    ========================================================================== */
 .app-icon {
     display: inline-grid;
@@ -2954,7 +2954,7 @@ body.alto-contraste .testimonios-stats {
 }
 
 /* ========================================================================== 
-   AJUSTES VISUALES: Home y Bitácora
+AJUSTES VISUALES: Home y Bitácora
    ========================================================================== */
 .testimonial-heading-icon {
     display: none !important;
@@ -3033,4 +3033,150 @@ body.modo-oscuro .autor-label {
 
 body.modo-oscuro .decisiones-lista li + li {
     border-top-color: #334155;
+}
+
+/* ==========================================================================
+AUTENTICACIÓN E IDIOMA — Login, registro y cambio de idioma
+   ========================================================================== */
+.auth-btn,
+.language-btn {
+    min-height: 42px;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-weight: 900;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.auth-login {
+    background: #ffffff;
+    color: #2563eb;
+    border: 1.5px solid #2563eb;
+}
+
+.auth-login:hover {
+    background: #eff6ff;
+    transform: translateY(-1px);
+}
+
+.auth-register {
+    background: #2563eb;
+    color: #ffffff;
+    border: 1.5px solid #2563eb;
+}
+
+.auth-register:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.language-btn {
+    width: 46px;
+    padding: 0;
+    background: #ffffff;
+    color: #0f172a;
+    border: 1.5px solid #2563eb;
+    display: inline-grid;
+    place-items: center;
+}
+
+.language-btn:hover {
+    background: #eff6ff;
+    color: #2563eb;
+    transform: translateY(-1px);
+}
+
+.modal-auth {
+    max-width: 460px;
+}
+
+body.modo-oscuro .auth-login,
+body.modo-oscuro .language-btn {
+    background: #111827;
+    color: #c4b5fd;
+    border-color: #7c3aed;
+}
+
+body.modo-oscuro .auth-register {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    color: #ffffff;
+}
+
+body.alto-contraste .auth-login,
+body.alto-contraste .language-btn {
+    background: #000000;
+    color: #fde047;
+    border-color: #fde047;
+}
+
+body.alto-contraste .auth-register {
+    background: #fde047;
+    color: #000000;
+    border-color: #fde047;
+}
+
+@media (max-width: 800px) {
+    .auth-btn,
+    .language-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .language-btn {
+        min-height: 42px;
+    }
+}
+
+.modal-language {
+    max-width: 560px;
+}
+
+.language-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.language-option {
+    border: 1.5px solid #dbe4f0;
+    background: #ffffff;
+    color: #0f172a;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.language-option:hover,
+.language-option.active {
+    background: #eff6ff;
+    border-color: #2563eb;
+    color: #2563eb;
+    transform: translateY(-1px);
+}
+
+body.modo-oscuro .language-option {
+    background: #111827;
+    color: #e5e7eb;
+    border-color: #334155;
+}
+
+body.modo-oscuro .language-option:hover,
+body.modo-oscuro .language-option.active {
+    background: rgba(37, 99, 235, 0.16);
+    color: #93c5fd;
+    border-color: #2563eb;
+}
+
+@media (max-width: 560px) {
+    .language-options {
+        grid-template-columns: 1fr;
+    }
 }
