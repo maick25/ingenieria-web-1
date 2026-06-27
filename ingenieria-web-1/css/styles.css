@@ -3180,3 +3180,58 @@ body.modo-oscuro .language-option.active {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   BOTONES DE ACCESIBILIDAD
+   ========================================================================== */
+.accesibilidad-flotante {
+    position: fixed;
+    bottom: 48px;
+    left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 999;
+}
+
+.accesibilidad-flotante .btn-control {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    min-width: unset;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+}
+
+.accesibilidad-flotante .btn-control:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .accesibilidad-flotante {
+        bottom: 50%;
+        left: auto;
+        right: 12px;
+        transform: translateY(50%);
+        gap: 6px;
+    }
+    .accesibilidad-flotante .btn-control {
+        padding: 8px 10px;
+        font-size: 0.82rem;
+    }
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+    .accesibilidad-flotante {
+        bottom: 50%;
+        left: auto;
+        right: 10px;
+        transform: translateY(50%);
+        gap: 5px;
+    }
+    .accesibilidad-flotante .btn-control {
+        padding: 7px 9px;
+        font-size: 0.78rem;
+    }
+}

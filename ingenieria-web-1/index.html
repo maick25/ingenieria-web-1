@@ -80,15 +80,6 @@
                     <button
                         type="button"
                         class="nav-btn"
-                        onclick="navegarSPA('accesibilidad', event)">
-                        Accesibilidad
-                    </button>
-                </li>
-
-                <li>
-                    <button
-                        type="button"
-                        class="nav-btn"
                         onclick="navegarSPA('bitacora', event)">
                         Bitácora
                     </button>
@@ -131,6 +122,14 @@
 
     </div>
 </header>
+
+    <!-- Botones de accesibilidad -->
+    <div class="accesibilidad-flotante" aria-label="Controles de accesibilidad rápida">
+        <button type="button" id="btn-fuente-mas-flotante" class="btn-control" title="Aumentar tamaño de letra" aria-label="Aumentar tamaño de letra">A+</button>
+        <button type="button" id="btn-contraste-flotante" class="btn-control btn-control--contraste" title="Modo contraste" aria-label="Activar alto contraste">Aa</button>
+        <button type="button" id="btn-modo-oscuro-flotante" class="btn-control btn-control--oscuro" title="Modo oscuro" aria-label="Activar modo oscuro">☾</button>
+        <button type="button" id="btn-fuente-menos-flotante" class="btn-control" title="Reducir tamaño de letra" aria-label="Reducir tamaño de letra">A−</button>
+    </div>
 
     <!-- Contenido principal de la aplicación -->
 
@@ -344,31 +343,7 @@
         </section>
 
 
-        <!-- SECCIÓN 5: ACCESIBILIDAD -->
-        <!-- Herramientas de accesibilidad para personalizar la visualización -->
-        <section id="accesibilidad" class="oculto">
-            <div class="section-container">
-                <nav class="breadcrumb" aria-label="Migas de pan"><button type="button" onclick="navegarSPA('inicio', event)">Inicio</button><span>›</span><strong>Accesibilidad</strong></nav>
-                <h2>Herramientas de Accesibilidad</h2>
-                <p class="section-subtitle">Personaliza la visualización del sitio para mejorar la experiencia de lectura.</p>
-
-                <div class="accessibility-panel">
-                    <div class="accessibility-card">
-                        <h3>Controles visuales</h3>
-                        <p>Usa estas opciones para adaptar el contraste y el tamaño del texto según tus necesidades.</p>
-
-                        <div class="accessibility-controls">
-                            <button type="button" id="btn-fuente-mas" class="btn-control" aria-label="Aumentar tamaño de letra">Aumentar letra A+</button>
-                            <button type="button" id="btn-contraste" class="btn-control btn-control--contraste" aria-label="Alternar alto contraste">Modo contraste</button>
-                            <button type="button" id="btn-modo-oscuro" class="btn-control btn-control--oscuro" aria-label="Activar modo oscuro">Modo oscuro</button>
-                            <button type="button" id="btn-fuente-menos" class="btn-control" aria-label="Reducir tamaño de letra">Reducir letra A−</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 6: BITÁCORA Y CRÉDITOS -->
+        <!-- SECCIÓN 5: BITÁCORA Y CRÉDITOS -->
         <!-- Bitácora con créditos, decisiones de diseño y registro de cambios -->
         <section id="bitacora" class="oculto">
             <div class="section-container">
@@ -416,7 +391,6 @@
                             <li><a href="#" onclick="navegarSPA('buscador', event)">Buscador — Filtros por nombre y categoría</a></li>
                             <li><a href="#" onclick="navegarSPA('inscripcion', event)">Alerta nuevos cursos — Formulario con RegEx</a></li>
                             <li><a href="#" onclick="navegarSPA('ods', event)">Impacto — Compromiso ODS 4 con estadísticas</a></li>
-                            <li><a href="#" onclick="navegarSPA('accesibilidad', event)">Accesibilidad — Contraste y tamaño de letra</a></li>
                             <li><a href="#" onclick="navegarSPA('bitacora', event)">Bitácora — Créditos y decisiones de diseño</a></li>
                         </ul>
                     </div>
@@ -432,6 +406,7 @@
                             <li><span class="version">v1.4</span> Media queries para móvil, tablet y escritorio</li>
                             <li><span class="version">v1.5</span> Filtros de buscador, ODS visual, bitácora completa</li>
                             <li><span class="version">v1.6</span> Favoritos funcionales, rutas de aprendizaje, instructores y curso destacado</li>
+                            <li><span class="version">v1.7</span> Botones de accesibilidad flotantes fijos, visibles en todas las secciones sin necesidad de navegar al menú</li>
                         </ul>
                     </div>
 
@@ -559,7 +534,6 @@
                     <li><button type="button" onclick="navegarSPA('buscador', event)">Buscador</button></li>
                     <li><button type="button" onclick="navegarSPA('inscripcion', event)">Alerta nuevos cursos</button></li>
                     <li><button type="button" onclick="navegarSPA('ods', event)">Impacto ODS</button></li>
-                    <li><button type="button" onclick="navegarSPA('accesibilidad', event)">Accesibilidad</button></li>
                     <li><button type="button" onclick="navegarSPA('bitacora', event)">Bitácora</button></li>
                 </ul>
             </nav>
@@ -584,6 +558,14 @@
 
     <div id="toast-feedback" class="toast-feedback oculto" role="status" aria-live="polite"></div>
 
-    <script src="js/index.js"></script>
+    <script src="js/modules/utils.js"></script>
+    <script src="js/modules/datos.js"></script>
+    <script src="js/modules/navegacion.js"></script>
+    <script src="js/modules/contenido-home.js"></script>
+    <script src="js/modules/formularios.js"></script>
+    <script src="js/modules/buscador.js"></script>
+    <script src="js/modules/accesibilidad.js"></script>
+    <script src="js/modules/auth-idioma.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
